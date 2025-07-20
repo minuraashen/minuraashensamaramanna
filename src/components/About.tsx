@@ -95,7 +95,7 @@ const About = () => {
               <CardContent>
                 <p className="font-medium mb-2">G.C.E. Advanced Level (Physical Science)</p>
                 <p className="text-muted-foreground">District Rank - 1           </p>
-                <p className="text-muted-foreground">Island Rank - 28</p>
+                <p className="text-muted-foreground">Excellent Results</p>
               </CardContent>
             </Card>
           </div>
