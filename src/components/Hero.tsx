@@ -34,7 +34,7 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-              <span className="px-3 py-1 bg-muted rounded-full">Electronics Engineering</span>
+              <span className="px-3 py-1 bg-muted rounded-full">Computer Vision</span>
               <span className="px-3 py-1 bg-muted rounded-full">Machine Learning</span>
               <span className="px-3 py-1 bg-muted rounded-full">Embedded Systems
             </span>
@@ -68,7 +68,7 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-scale-in">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-2xl opacity-50 animate-float"></div>
-              <img src={profilePicture} alt="Minura Ashen Samaramanna" className="relative w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-card border border-border" />
+              
             </div>
           </div>
         </div>
