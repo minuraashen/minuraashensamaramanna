@@ -1,32 +1,24 @@
 import { GraduationCap, Award, Users, Target } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const About = () => {
-  const achievements = [
-    {
-      icon: <GraduationCap className="h-6 w-6" />,
-      title: "Academic Excellence",
-      description: "CGPA 3.91/4.0, Dean's List Semester 1 & 2"
-    },
-    {
-      icon: <Award className="h-6 w-6" />,
-      title: "Top District Rank",
-      description: "G.C.E. Advanced Level Physical Science"
-    },
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: "Teaching Experience",
-      description: "Tutoring Physics, Chemistry & Mathematics"
-    },
-    {
-      icon: <Target className="h-6 w-6" />,
-      title: "Problem Solver",
-      description: "Passion for practical, efficient solutions"
-    }
-  ];
-
-  return (
-    <section id="about" className="py-20 px-4 bg-muted/30">
+  const achievements = [{
+    icon: <GraduationCap className="h-6 w-6" />,
+    title: "Academic Excellence",
+    description: "CGPA 3.91/4.0, Dean's List Semester 1 & 2"
+  }, {
+    icon: <Award className="h-6 w-6" />,
+    title: "Top District Rank",
+    description: "G.C.E. Advanced Level Physical Science"
+  }, {
+    icon: <Users className="h-6 w-6" />,
+    title: "Teaching Experience",
+    description: "Tutoring Physics, Chemistry & Mathematics"
+  }, {
+    icon: <Target className="h-6 w-6" />,
+    title: "Problem Solver",
+    description: "Passion for practical, efficient solutions"
+  }];
+  return <section id="about" className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
@@ -59,8 +51,7 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-scale-in">
-            {achievements.map((achievement, index) => (
-              <Card key={index} className="bg-card border-border hover:shadow-glow transition-all duration-300 hover:scale-105">
+            {achievements.map((achievement, index) => <Card key={index} className="bg-card border-border hover:shadow-glow transition-all duration-300 hover:scale-105">
                 <CardHeader className="pb-3">
                   <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center text-primary-foreground mb-3">
                     {achievement.icon}
@@ -70,8 +61,7 @@ const About = () => {
                 <CardContent>
                   <p className="text-muted-foreground text-sm">{achievement.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
 
@@ -104,15 +94,13 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="font-medium mb-2">G.C.E. Advanced Level (Physical Science)</p>
-                <p className="text-muted-foreground">Top District Rank</p>
+                <p className="text-muted-foreground">District Rank - 1           </p>
                 <p className="text-muted-foreground">Excellent Results</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
