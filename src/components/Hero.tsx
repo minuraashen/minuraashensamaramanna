@@ -1,6 +1,5 @@
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePicture from "@/assets/profile-picture.jpg";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -13,7 +12,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4">
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex items-center justify-center">
           {/* Text Content */}
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
@@ -80,17 +79,6 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Profile Picture */}
-          <div className="flex justify-center lg:justify-end animate-scale-in">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-2xl opacity-50 animate-float"></div>
-              <img
-                src={profilePicture}
-                alt="Minura Ashen Samaramanna"
-                className="relative w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-card border border-border"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
