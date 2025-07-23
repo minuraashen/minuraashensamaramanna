@@ -23,7 +23,8 @@ const projects = [
       technologies: ["Analog Circuit Design", "Signal Processing", "Simulation", "Testing"],
       status: "Completed",
       gradient: "from-secondary to-secondary/80",
-      githubUrl: "https://github.com/minuraashen/Five-Band-Audio-Equilizer"
+      githubUrl: "https://github.com/minuraashen/Five-Band-Audio-Equilizer",
+      detailsUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7346696185018990593/"
     },
     {
       icon: <Cpu className="h-8 w-8" />,
@@ -120,14 +121,29 @@ const projects = [
                 </div>
 
                 <div className="flex gap-3 pt-4">
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View Details
-                  </Button>
+                  {project.detailsUrl ? (
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                      asChild
+                    >
+                      <a href={project.detailsUrl} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        View Details
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="border-primary text-primary opacity-50 cursor-not-allowed"
+                      disabled
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      View Details
+                    </Button>
+                  )}
                   {project.githubUrl ? (
                     <Button 
                       size="sm" 
