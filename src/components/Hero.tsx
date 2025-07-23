@@ -45,9 +45,11 @@ const Hero = () => {
                 Explore My Work
                 <ArrowDown className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
+              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
+                <a href="https://drive.google.com/uc?export=download&id=1cO5J7MMy7mImJ1SwnbFtPaa3izJ0m-v0" download="Minura_Ashen_Samaramanna_CV.pdf">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download CV
+                </a>
               </Button>
             </div>
 
