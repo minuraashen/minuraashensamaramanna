@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const Projects = () => {
-  const projects = [
+const projects = [
     {
       icon: <Navigation className="h-8 w-8" />,
       title: "Autonomous Mobile Robot (AMR)",
@@ -12,7 +12,8 @@ const Projects = () => {
       myRole: "Designed compact power distribution PCB, conducted comprehensive PCB testing, and performed hardware debugging to ensure system reliability.",
       technologies: ["LiDAR", "SLAM", "PCB Design", "Embedded Systems", "Motion Control"],
       status: "Completed",
-      gradient: "from-primary to-primary/80"
+      gradient: "from-primary to-primary/80",
+      githubUrl: "https://github.com/AMR-Platform"
     },
     {
       icon: <Volume2 className="h-8 w-8" />,
@@ -21,7 +22,8 @@ const Projects = () => {
       myRole: "Led circuit design and simulation phases, conducted thorough testing procedures, and created detailed technical documentation.",
       technologies: ["Analog Circuit Design", "Signal Processing", "Simulation", "Testing"],
       status: "Completed",
-      gradient: "from-secondary to-secondary/80"
+      gradient: "from-secondary to-secondary/80",
+      githubUrl: "https://github.com/minuraashen/Five-Band-Audio-Equilizer"
     },
     {
       icon: <Cpu className="h-8 w-8" />,
@@ -30,7 +32,8 @@ const Projects = () => {
       myRole: "Programmed STM32 microcontroller at register level, implementing low-level hardware control and optimization algorithms.",
       technologies: ["STM32", "PID Control", "Sensor Integration", "Assembly", "Autonomous Navigation"],
       status: "Ongoing",
-      gradient: "from-primary to-secondary"
+      gradient: "from-primary to-secondary",
+      githubUrl: "https://github.com/minuraashen/MicroJAS"
     },
     {
       icon: <Mic className="h-8 w-8" />,
@@ -125,14 +128,29 @@ const Projects = () => {
                     <ExternalLink className="w-4 h-4 mr-2" />
                     View Details
                   </Button>
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    className="border-muted-foreground text-muted-foreground hover:bg-muted"
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    Source Code
-                  </Button>
+                  {project.githubUrl ? (
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="border-muted-foreground text-muted-foreground hover:bg-muted"
+                      asChild
+                    >
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        Source Code
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="border-muted-foreground text-muted-foreground opacity-50 cursor-not-allowed"
+                      disabled
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Source Code
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
