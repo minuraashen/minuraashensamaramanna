@@ -49,7 +49,7 @@ const projects = [
       icon: <Brain className="h-8 w-8" />,
       title: "Machine Learning Projects",
       description: "A collection of beginner-level machine learning projects to build a strong foundation in supervised learning. I am still learning and have just begun my journey into Machine Learning. This repository contains my beginner-level projects as I explore and improve my skills.",
-      myRole: "Implemented end-to-end ML workflows including data preprocessing, model training, evaluation, and visualization using Python and scikit-learn ecosystem.",
+      myRole: "Implemented ML workflows including data preprocessing, model training, evaluation, and visualization using Python and scikit-learn ecosystem.",
       technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Matplotlib", "Seaborn"],
       status: "Ongoing",
       gradient: "from-primary to-accent"
