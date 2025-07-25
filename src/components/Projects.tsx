@@ -52,7 +52,8 @@ const projects = [
       myRole: "Implemented ML workflows including data preprocessing, model training, evaluation, and visualization using Python and scikit-learn ecosystem.",
       technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Matplotlib", "Seaborn"],
       status: "Ongoing",
-      gradient: "from-primary to-accent"
+      gradient: "from-primary to-accent",
+      githubUrl: "https://github.com/minuraashen/Machine-Learning"
     },
     {
       icon: <Image className="h-8 w-8" />,
