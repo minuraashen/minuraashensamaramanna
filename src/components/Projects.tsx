@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Cpu, Volume2, Navigation, Mic } from "lucide-react";
+import { ExternalLink, Github, Cpu, Volume2, Navigation, Mic, Brain, Image } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -44,6 +44,24 @@ const projects = [
       technologies: ["Analog Design", "Audio Engineering", "Thermal Compensation", "Low-Noise Design"],
       status: "Completed",
       gradient: "from-secondary to-primary"
+    },
+    {
+      icon: <Brain className="h-8 w-8" />,
+      title: "Machine Learning Projects",
+      description: "A collection of beginner-level machine learning projects to build a strong foundation in supervised learning. I am still learning and have just begun my journey into Machine Learning. This repository contains my beginner-level projects as I explore and improve my skills.",
+      myRole: "Implemented end-to-end ML workflows including data preprocessing, model training, evaluation, and visualization using Python and scikit-learn ecosystem.",
+      technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Matplotlib", "Seaborn"],
+      status: "Ongoing",
+      gradient: "from-primary to-accent"
+    },
+    {
+      icon: <Image className="h-8 w-8" />,
+      title: "Intelligent Historical Image Restoration",
+      description: "End-to-end machine learning project for restoring old or grayscale images through automatic colorization, noise & scratch removal, super-resolution enhancement, and explainable AI with web-based deployment.",
+      myRole: "Developing multi-task pipeline combining computer vision techniques with user-interactive controls and explainability features for historical photo restoration.",
+      technologies: ["Deep Learning", "Computer Vision", "PyTorch", "OpenCV", "Web Deployment", "Explainable AI"],
+      status: "Starting",
+      gradient: "from-accent to-primary"
     }
   ];
 

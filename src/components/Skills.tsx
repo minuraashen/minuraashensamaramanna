@@ -19,7 +19,7 @@ const Skills = () => {
     {
       icon: <Brain className="h-6 w-6" />,
       title: "Specialized Areas",
-      skills: ["Machine Learning", "Computer Vision", "Embedded Systems", "PCB Design", "SLAM", "Signal Processing"],
+      skills: ["Machine Learning", "Computer Vision", "Embedded Systems", "PCB Design", "Signal Processing"],
       color: "bg-primary"
     },
     {

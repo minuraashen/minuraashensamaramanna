@@ -36,8 +36,8 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
               <span className="px-3 py-1 bg-muted rounded-full">Computer Vision</span>
               <span className="px-3 py-1 bg-muted rounded-full">Machine Learning</span>
-              <span className="px-3 py-1 bg-muted rounded-full">Embedded Systems
-            </span>
+              <span className="px-3 py-1 bg-muted rounded-full">Embedded Systems</span>
+              <span className="px-3 py-1 bg-muted rounded-full">Communication</span>
             </div>
 
             <div className="flex flex-wrap gap-4">
