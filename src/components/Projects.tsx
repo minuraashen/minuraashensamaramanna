@@ -62,7 +62,8 @@ const projects = [
       myRole: "Developing multi-task pipeline combining computer vision techniques with user-interactive controls and explainability features for historical photo restoration.",
       technologies: ["Deep Learning", "Computer Vision", "PyTorch", "OpenCV", "Web Deployment", "Explainable AI"],
       status: "Starting",
-      gradient: "from-accent to-primary"
+      gradient: "from-accent to-primary",
+      githubUrl: "https://github.com/minuraashen/Historical-Image-Colourization"
     }
   ];
 
