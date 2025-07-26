@@ -28,9 +28,7 @@ const Hero = () => {
                   Samaramanna
                 </span>
               </h1>
-              <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl">
-                Engineering Practical, Efficient Solutions with Creative and Mathematical Precision
-              </p>
+              <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl">Engineering Practical and Efficient Solutions with Creative and Mathematical Precision</p>
             </div>
 
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
@@ -64,11 +62,7 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-scale-in">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-2xl opacity-50 animate-float"></div>
-              <img 
-                src={profilePicture} 
-                alt="Minura Ashen Samaramanna" 
-                className="relative z-10 w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-2xl border-2 border-primary/20"
-              />
+              <img src={profilePicture} alt="Minura Ashen Samaramanna" className="relative z-10 w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-2xl border-2 border-primary/20" />
             </div>
           </div>
         </div>
