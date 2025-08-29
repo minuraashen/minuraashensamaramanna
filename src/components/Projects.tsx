@@ -3,42 +3,24 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 const Projects = () => {
-  const projects = [{
-    icon: <Navigation className="h-8 w-8" />,
-    title: "Autonomous Mobile Robot (AMR)",
-    description: "Advanced modular robot with LiDAR obstacle detection, SLAM navigation, and closed-loop motion control featuring embedded telemetry and custom UI interface.",
-    myRole: "Designed compact power distribution PCB, conducted comprehensive PCB testing, and performed hardware debugging to ensure system reliability.",
-    technologies: ["LiDAR", "SLAM", "PCB Design", "Embedded Systems", "Motion Control"],
-    status: "Completed",
-    gradient: "from-primary to-primary/80",
-    githubUrl: "https://github.com/AMR-Platform"
-  }, {
-    icon: <Volume2 className="h-8 w-8" />,
-    title: "Five-Band Audio Equalizer",
-    description: "Professional analog circuit design featuring precise frequency band control with comprehensive simulation and testing protocols.",
-    myRole: "Led circuit design and simulation phases, conducted thorough testing procedures, and created detailed technical documentation.",
-    technologies: ["Analog Circuit Design", "Signal Processing", "Simulation", "Testing"],
-    status: "Completed",
-    gradient: "from-secondary to-secondary/80",
-    githubUrl: "https://github.com/minuraashen/Five-Band-Audio-Equilizer",
-    detailsUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7346696185018990593/"
-  }, {
+  const projects = [ {
     icon: <Cpu className="h-8 w-8" />,
-    title: "Micromouse Maze-Solving Robot",
-    description: "Intelligent autonomous robot capable of maze navigation using advanced sensor integration and precise PID control algorithms.",
-    myRole: "Programmed STM32 microcontroller at register level, implementing low-level hardware control and optimization algorithms.",
-    technologies: ["STM32", "PID Control", "Sensor Integration", "Assembly", "Autonomous Navigation"],
-    status: "Ongoing",
-    gradient: "from-primary to-secondary",
-    githubUrl: "https://github.com/minuraashen/MicroJAS"
-  }, {
-    icon: <Mic className="h-8 w-8" />,
-    title: "Microphone Preamp with Class AB Amplifier",
-    description: "High-fidelity low-noise audio amplifier design with advanced biasing techniques and thermal compensation for professional audio applications.",
-    myRole: "Designed amplifier architecture with focus on biasing optimization and thermal compensation circuits for enhanced performance.",
-    technologies: ["Analog Design", "Audio Engineering", "Thermal Compensation", "Low-Noise Design"],
+    title: "Strength Training Exercise Recognition System",
+    description: "Developed a context-aware strength training tracker using wristband accelerometer and gyroscope data. Applied supervised learning algorithms to classify exercises, count repetitions. Collected and processed multi-participant sensor dataset for model training and evaluation sessions.",
+    technologies: ["Python", "Numpy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
+    myRole: "This is an individual project",
     status: "Completed",
-    gradient: "from-secondary to-primary"
+    gradient: "from-primary to-secondary",
+    githubUrl: "https://github.com/minuraashen/Fitness_tracker_ML_project"
+  }, {
+    icon: <Image className="h-8 w-8" />,
+    title: " Full-Stack E-Commerce Application using MERN",
+    description: "Developing a responsive e-commerce app with MongoDB, Express.js, React, and Node.js. Building the frontend using React and Chakra UI for modern, reusable components. Implementing backend APIs for authentication, product management, and checkout flow.",
+    technologies: ["JavaScript", "React", "MongodB", "Node.js", "Express.js"],
+    myRole: "This is an individual project",
+    status: "Ongoing",
+    gradient: "from-accent to-primary",
+    githubUrl: "https://github.com/minuraashen/MERN_project"
   }, {
     icon: <Brain className="h-8 w-8" />,
     title: "Machine Learning Projects",
@@ -49,14 +31,32 @@ const Projects = () => {
     gradient: "from-primary to-accent",
     githubUrl: "https://github.com/minuraashen/Machine-Learning"
   }, {
-    icon: <Image className="h-8 w-8" />,
-    title: "Intelligent Historical Image Restoration",
-    description: "End-to-end machine learning project for restoring old or grayscale images through automatic colorization, noise & scratch removal, super-resolution enhancement, and explainable AI with web-based deployment.",
-    myRole: "Developing multi-task pipeline combining computer vision techniques with user-interactive controls and explainability features for historical photo restoration.",
-    technologies: ["Deep Learning", "Computer Vision", "PyTorch", "OpenCV", "Web Deployment", "Explainable AI"],
-    status: "Starting",
-    gradient: "from-accent to-primary",
-    githubUrl: "https://github.com/minuraashen/Historical-Image-Colourization"
+    icon: <Volume2 className="h-8 w-8" />,
+    title: "Five-Band Audio Equalizer",
+    description: " Designed filters for desired frequency bands in a five-band audio equalizer. Developed and simulated the complete analog circuit for the equalizer. Tested and debugged the final hardware implementation to ensure desired performance.",
+    myRole: "Led circuit design and simulation phases, conducted thorough testing procedures, and created detailed technical documentation.",
+    technologies: ["Analog Circuit Design", "Signal Processing", "Simulation", "Testing"],
+    status: "Completed",
+    gradient: "from-secondary to-secondary/80",
+    githubUrl: "https://github.com/minuraashen/Five-Band-Audio-Equilizer",
+    detailsUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7346696185018990593/"
+  },{
+    icon: <Navigation className="h-8 w-8" />,
+    title: "Autonomous Mobile Robot (AMR)",
+    description: "Advanced modular robot with LiDAR obstacle detection, SLAM navigation, and closed-loop motion control featuring embedded telemetry and custom UI interface.",
+    myRole: "Designed compact power distribution PCB, conducted comprehensive PCB testing, and performed hardware debugging to ensure system reliability.",
+    technologies: ["LiDAR", "SLAM", "PCB Design", "Embedded Systems", "Motion Control"],
+    status: "Completed",
+    gradient: "from-primary to-primary/80",
+    githubUrl: "https://github.com/AMR-Platform"
+  },  {
+    icon: <Mic className="h-8 w-8" />,
+    title: "Microphone Preamp with Class AB Amplifier",
+    description: "High-fidelity low-noise audio amplifier design with advanced biasing techniques and thermal compensation for professional audio applications.",
+    myRole: "Designed amplifier architecture with focus on biasing optimization and thermal compensation circuits for enhanced performance.",
+    technologies: ["Analog Design", "Audio Engineering", "Thermal Compensation", "Low-Noise Design"],
+    status: "Completed",
+    gradient: "from-secondary to-primary"
   }];
   return <section id="projects" className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
@@ -138,20 +138,6 @@ const Projects = () => {
                 </div>
               </CardContent>
             </Card>)}
-        </div>
-
-        <div className="text-center mt-16 animate-fade-in">
-          <p className="text-muted-foreground mb-6">
-            Want to see more of my work or collaborate on exciting projects?
-          </p>
-          <Button size="lg" className="bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow" onClick={() => {
-          const element = document.querySelector("#contact");
-          if (element) element.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }}>
-            Let's Connect
-          </Button>
         </div>
       </div>
     </section>;

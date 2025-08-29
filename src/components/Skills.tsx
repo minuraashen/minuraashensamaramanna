@@ -7,7 +7,7 @@ const Skills = () => {
     {
       icon: <Code className="h-6 w-6" />,
       title: "Programming Languages",
-      skills: ["Python", "C/C++", "MATLAB", "Assembly (STM32)"],
+      skills: ["Python", "JavaScript", "C/C++", "MATLAB", "Assembly (STM32)"],
       color: "bg-primary"
     },
     {
@@ -18,8 +18,8 @@ const Skills = () => {
     },
     {
       icon: <Brain className="h-6 w-6" />,
-      title: "Specialized Areas",
-      skills: ["Machine Learning", "Computer Vision", "Embedded Systems", "PCB Design", "Signal Processing"],
+      title: "Interested Areas",
+      skills: ["Machine Learning", "Computer Vision", "Artificial Intelligence", "Software Development", "Digital Signal Processing"],
       color: "bg-primary"
     },
     {
@@ -120,8 +120,8 @@ const Skills = () => {
             </div>
             <div className="p-6 rounded-lg bg-gradient-card border border-border">
               <Code className="h-12 w-12 mx-auto mb-4 text-primary" />
-              <h4 className="text-lg font-semibold mb-2">Embedded Systems</h4>
-              <p className="text-muted-foreground text-sm">Microcontroller programming and hardware integration</p>
+              <h4 className="text-lg font-semibold mb-2">Software Development</h4>
+              <p className="text-muted-foreground text-sm">MERN Stack, Data Structures and Algorithms</p>
             </div>
           </div>
         </div>

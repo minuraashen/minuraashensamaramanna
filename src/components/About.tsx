@@ -35,12 +35,12 @@ const About = () => {
             <h3 className="text-2xl font-semibold">My Journey</h3>
             <p className="text-muted-foreground leading-relaxed">
               I'm currently pursuing my B.Sc.(Hons) in Electronics and Telecommunications Engineering at the 
-              University of Moratuwa, where I've maintained academic excellence with a CGPA of 3.91/4.0 and 
-              earned a place on the Dean's List for consecutive semesters.
+              University of Moratuwa, where I've maintained academic excellence with a CGPA of 3.92/4.0 and 
+              earned a place on the Dean's List for three semesters.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               My passion lies in bridging theoretical knowledge with practical applications, particularly in 
-              machine learning, computer vision, and embedded systems. I believe in engineering solutions 
+              machine learning, computer vision, and software development. I believe in engineering solutions 
               that are not only technically sound but also creatively designed and mathematically precise.
             </p>
             <p className="text-muted-foreground leading-relaxed">
@@ -79,8 +79,8 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="font-medium mb-2">B.Sc.(Hons) Electronics and Telecommunications Engineering</p>
-                <p className="text-muted-foreground">CGPA: 3.91/4.0</p>
-                <p className="text-muted-foreground">Dean's List Semester 1 & 2</p>
+                <p className="text-muted-foreground">CGPA: 3.92/4.0</p>
+                <p className="text-muted-foreground">Dean's List for Semester 1, 2 & 4</p>
               </CardContent>
             </Card>
 

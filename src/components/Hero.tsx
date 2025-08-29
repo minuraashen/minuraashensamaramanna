@@ -1,6 +1,8 @@
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profilePicture from "@/assets/profile-picture.jpg";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 const Hero = () => {
   const scrollToAbout = () => {
     const element = document.querySelector("#about");
@@ -28,14 +30,26 @@ const Hero = () => {
                   Samaramanna
                 </span>
               </h1>
-              <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl">Engineering Practical and Efficient Solutions with Creative and Mathematical Precision</p>
+              <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl"> Engineering Practical and Efficient Solutions with Creative and Mathematical Precision</p>
             </div>
 
-            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-              <span className="px-3 py-1 bg-muted rounded-full">Computer Vision</span>
-              <span className="px-3 py-1 bg-muted rounded-full">Machine Learning</span>
-              <span className="px-3 py-1 bg-muted rounded-full">Embedded Systems</span>
-              <span className="px-3 py-1 bg-muted rounded-full">Communication</span>
+            <div className="grid md:grid-cols-1">
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-primary"></div>
+                  Ares of Interests
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                <span className="px-3 py-1 bg-muted rounded-full">Computer Vision</span>
+                <span className="px-3 py-1 bg-muted rounded-full">Machine Learning</span>
+                                <span className="px-3 py-1 bg-muted rounded-full">AI</span>
+                <span className="px-3 py-1 bg-muted rounded-full">Fullstack Development</span>
+              </div>
+              </CardContent>
+            </Card>
             </div>
 
             <div className="flex flex-wrap gap-4">
