@@ -1,6 +1,7 @@
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import profilePicture from "@/assets/profile-picture.jpg";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -100,13 +101,13 @@ const Hero = () => {
           <div className="flex justify-center animate-scale-in order-1 lg:order-2">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-50 animate-float"></div>
-              <div className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-muted to-muted/50 rounded-2xl sm:rounded-3xl shadow-2xl border-2 border-primary/20 flex items-center justify-center">
-                <div className="text-muted-foreground text-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-2xl sm:text-3xl font-bold text-primary">MA</span>
-                  </div>
-                  <p className="text-sm sm:text-base">Profile Picture</p>
-                </div>
+              <div className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl border-2 border-primary/20 flex items-center justify-center overflow-hidden">
+                {/* You can replace this with your actual image URL */}
+                <img 
+                  src={profilePicture}
+                  alt="Minura Ashen Samaramanna" 
+                  className="w-full h-full object-cover" 
+                />
               </div>
             </div>
           </div>
