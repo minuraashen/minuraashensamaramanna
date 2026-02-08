@@ -69,54 +69,54 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="container mx-auto">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Get In <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
+            Get In <span className="text-gradient">Touch</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to collaborate on innovative projects or discuss exciting opportunities? 
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Ready to collaborate on innovative projects or discuss exciting opportunities?
             I'd love to hear from you!
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10">
           {/* Contact Information */}
           <div className="space-y-8 animate-fade-in">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Whether you're interested in collaboration, have a project in mind, or just want to 
-                discuss the latest in electronics and technology, I'm always excited to connect with 
+            <div className="glass rounded-3xl p-6 sm:p-8">
+              <h3 className="text-2xl font-semibold mb-4">Let's Connect</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Whether you're interested in collaboration, have a project in mind, or just want to
+                discuss the latest in electronics and technology, I'm always excited to connect with
                 fellow engineers and innovators.
               </p>
+
+              <div className="space-y-4">
+                {contactInfo.map((info, index) => (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-gradient-primary text-primary-foreground">
+                      {info.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold">{info.label}</h4>
+                      {info.href ? (
+                        <a
+                          href={info.href}
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className="text-muted-foreground">{info.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-gradient-primary text-primary-foreground">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">{info.label}</h4>
-                    {info.href ? (
-                      <a 
-                        href={info.href}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="text-muted-foreground">{info.value}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-8">
+            <div className="glass rounded-3xl p-6 sm:p-8">
               <h4 className="font-semibold mb-4">Follow Me</h4>
               <div className="flex gap-4">
                 {socialLinks.map((link, index) => (
@@ -125,7 +125,7 @@ const Contact = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-glow ${link.color}`}
+                    className={`p-3 rounded-xl bg-muted/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-glow ${link.color}`}
                     title={link.label}
                   >
                     {link.icon}
@@ -136,7 +136,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="bg-card border-border animate-scale-in">
+          <Card className="glass animate-scale-in">
             <CardHeader>
               <CardTitle>Send a Message</CardTitle>
             </CardHeader>
@@ -154,7 +154,7 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Enter your name"
                       required
-                      className="bg-background border-border focus:ring-primary"
+                      className="bg-background/60 border-border/70 focus:ring-primary"
                     />
                   </div>
                   <div>
@@ -169,7 +169,7 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Enter your email"
                       required
-                      className="bg-background border-border focus:ring-primary"
+                      className="bg-background/60 border-border/70 focus:ring-primary"
                     />
                   </div>
                 </div>
@@ -185,7 +185,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="What's this about?"
                     required
-                    className="bg-background border-border focus:ring-primary"
+                    className="bg-background/60 border-border/70 focus:ring-primary"
                   />
                 </div>
 
@@ -201,12 +201,12 @@ const Contact = () => {
                     placeholder="Tell me about your project or inquiry..."
                     rows={6}
                     required
-                    className="bg-background border-border focus:ring-primary resize-none"
+                    className="bg-background/60 border-border/70 focus:ring-primary resize-none"
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow"
                   size="lg"
                 >

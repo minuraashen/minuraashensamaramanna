@@ -2,10 +2,10 @@ import { Heart } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-8 px-4 border-t border-border bg-muted/20">
-      <div className="container mx-auto">
-        <div className="text-center">
-          <p className="text-sm text-muted-foreground mb-2">
+    <footer className="py-10 px-4 border-t border-border/60">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center space-y-2">
+          <p className="text-sm text-muted-foreground">
             Engineering practical solutions with creative and mathematical precision
           </p>
           <p className="text-muted-foreground">
