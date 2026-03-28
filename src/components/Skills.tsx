@@ -7,19 +7,19 @@ const Skills = () => {
     {
       icon: <Code className="h-6 w-6" />,
       title: "Programming Languages",
-      skills: ["Python", "JavaScript", "C/C++", "MATLAB", "Assembly (STM32)"],
+      skills: ["Python", "C/C++", "JavaScript/TypeScript", "MATLAB"],
       color: "bg-primary"
     },
     {
       icon: <Cog className="h-6 w-6" />,
-      title: "Software & Tools",
-      skills: ["Altium Designer", "LTSpice", "SolidWorks", "CubeIDE", "Proteus", "Arduino", "Node-RED"],
+      title: "Frameworks & Tools",
+      skills: ["OpenCV", "TensorFlow / Keras", "MERN Stack (MongoDB, Express, React, Node)", "Altium Designer", "LTSpice", "SolidWorks", "CubeIDE", "Proteus", "Arduino", "Node-RED"],
       color: "bg-secondary"
     },
     {
       icon: <Brain className="h-6 w-6" />,
       title: "Interested Areas",
-      skills: ["Machine Learning", "Computer Vision", "Artificial Intelligence", "Software Development", "Digital Signal Processing"],
+      skills: ["AI / Machine Learning", "Computer Vision", "Embedded Systems", "Telecommunication", "Software Development", "Digital Signal Processing"],
       color: "bg-primary"
     },
     {

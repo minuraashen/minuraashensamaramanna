@@ -4,19 +4,19 @@ const About = () => {
   const achievements = [{
     icon: <GraduationCap className="h-6 w-6" />,
     title: "Academic Excellence",
-    description: "CGPA 3.91/4.0, Dean's List Semester 1 & 2"
+    description: "CGPA 3.93/4.0, Dean's List for Semesters 1, 2, 4, 5"
   }, {
     icon: <Award className="h-6 w-6" />,
     title: "Top District Rank",
-    description: "G.C.E. Advanced Level Physical Science"
+    description: "G.C.E. Advanced Level (Physical Science) — 4 A's, Z-Score 2.7031"
   }, {
     icon: <Users className="h-6 w-6" />,
-    title: "Teaching Experience",
-    description: "Tutoring Physics, Chemistry & Mathematics"
+    title: "Teaching & Mentoring",
+    description: "Tutoring Physics, Chemistry & Combined Mathematics"
   }, {
     icon: <Target className="h-6 w-6" />,
     title: "Problem Solver",
-    description: "Passion for practical, efficient solutions"
+    description: "Focused on practical, efficient solutions grounded in math"
   }];
   return <section id="about" className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
@@ -25,8 +25,9 @@ const About = () => {
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A passionate Electronics and Telecommunications Engineering undergraduate with a drive for innovation, 
-            mathematical precision, and emerging technologies.
+            I am an Electronic and Telecommunication Engineering undergraduate passionate about mathematics and emerging
+            technologies, with a mission to acquire knowledge, approach problems creatively, and develop solutions that
+            are both practical and efficient, grounded in rigorous mathematical reasoning and analysis.
           </p>
         </div>
 
@@ -34,9 +35,9 @@ const About = () => {
           <div className="space-y-6 animate-fade-in">
             <h3 className="text-2xl font-semibold">My Journey</h3>
             <p className="text-muted-foreground leading-relaxed">
-              I'm currently pursuing my B.Sc.(Hons) in Electronics and Telecommunications Engineering at the 
-              University of Moratuwa, where I've maintained academic excellence with a CGPA of 3.92/4.0 and 
-              earned a place on the Dean's List for three semesters.
+              I'm currently pursuing my B.Sc.(Hons) in Electronic and Telecommunication Engineering at the
+              University of Moratuwa. I have maintained strong academic performance with a CGPA of 3.93/4.0 and
+              was named on the Dean's List for Semesters 1, 2, 4 and 5.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               My passion lies in bridging theoretical knowledge with practical applications, particularly in 
@@ -78,9 +79,9 @@ const About = () => {
                 <p className="text-muted-foreground">2023 – Present</p>
               </CardHeader>
               <CardContent>
-                <p className="font-medium mb-2">B.Sc.(Hons) Electronics and Telecommunications Engineering</p>
-                <p className="text-muted-foreground">CGPA: 3.92/4.0</p>
-                <p className="text-muted-foreground">Dean's List for Semester 1, 2 & 4</p>
+                <p className="font-medium mb-2">B.Sc.(Hons) Electronic and Telecommunication Engineering</p>
+                <p className="text-muted-foreground">CGPA: 3.93/4.0</p>
+                <p className="text-muted-foreground">Dean's List for Semesters 1, 2, 4, 5</p>
               </CardContent>
             </Card>
 
@@ -94,8 +95,29 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="font-medium mb-2">G.C.E. Advanced Level (Physical Science)</p>
-                <p className="text-muted-foreground">District Rank - 1           </p>
-                <p className="text-muted-foreground">Island Rank - 28</p>
+                <p className="text-muted-foreground">4 A's — Combined Mathematics, Physics, Chemistry, General English</p>
+                <p className="text-muted-foreground">District Rank: 1 | Island Rank: 28 | Z-Score: 2.7031</p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="mt-8 md:mt-0 md:col-span-2">
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-accent"></div>
+                  Software Engineer Intern — WSO2 LLC (Integration AI Team)
+                </CardTitle>
+                <p className="text-muted-foreground">Integration AI Team — Semantic search & MI Copilot</p>
+              </CardHeader>
+              <CardContent>
+                <p className="font-medium mb-2">Key contributions</p>
+                <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                  <li>Built a Semantic Code Search Tool for MI Copilot: evaluated embedding models for MI configuration files and implemented a background embedding service to index changes.</li>
+                  <li>Implemented a semantic retrieval pipeline enabling intent-aware code search over MI configurations.</li>
+                  <li>Designed multi-workspace support with isolated semantic indexes and workspace-aware context retrieval (ongoing).</li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-3">Tech stack: TypeScript, Node.js, SQLite, Java, Anthropic</p>
               </CardContent>
             </Card>
           </div>

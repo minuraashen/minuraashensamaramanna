@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import profilePicture from "@/assets/profile-picture.jpg";
@@ -34,7 +34,7 @@ const Hero = () => {
                 </span>
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 px-2 lg:px-0">
-                Engineering Practical and Efficient Solutions with Creative and Mathematical Precision
+                B.Sc.(Hons) Electronic and Telecommunication Engineering — University of Moratuwa 
               </p>
             </div>
 
@@ -50,14 +50,14 @@ const Hero = () => {
                   <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground justify-center lg:justify-start">
                     <span className="px-2 py-1 sm:px-3 sm:py-1 bg-muted rounded-full">Computer Vision</span>
                     <span className="px-2 py-1 sm:px-3 sm:py-1 bg-muted rounded-full">Machine Learning</span>
-                    <span className="px-2 py-1 sm:px-3 sm:py-1 bg-muted rounded-full">AI</span>
-                    <span className="px-2 py-1 sm:px-3 sm:py-1 bg-muted rounded-full">Fullstack Development</span>
+                    <span className="px-2 py-1 sm:px-3 sm:py-1 bg-muted rounded-full">Artificial Intelligence</span>
+                    <span className="px-2 py-1 sm:px-3 sm:py-1 bg-muted rounded-full">Software Development</span>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center lg:justify-start gap-3">
               <Button 
                 size="lg" 
                 className="bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3" 
@@ -65,6 +65,18 @@ const Hero = () => {
               >
                 Explore My Work
                 <ArrowDown className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3"
+                asChild
+              >
+                <a href="https://drive.google.com/file/d/14BODnIbDgJ1688B4h-lY94IEgQTY5MZT/view?usp=sharing" download>
+                  Download CV
+                  <Download className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                </a>
               </Button>
             </div>
 
