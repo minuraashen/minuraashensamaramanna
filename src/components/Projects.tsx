@@ -1,10 +1,32 @@
-import { ExternalLink, Github, Cpu, Volume2, Navigation, Mic, Brain, Image } from "lucide-react";
+import { ExternalLink, Github, Cpu, Volume2, Navigation, Mic, Brain, Image, Cog } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const Projects = () => {
   const projects = [
+
+    {
+      icon: <Brain className="h-6 w-6 sm:h-8 sm:w-8" />,
+      title: "Semantic Code Search Tool for WSO2 Micro Integrator Copilot (Intern Project)",
+      description: "Developed an AI-powered semantic code search tool for WSO2 Micro Integrator Copilot, enabling natural language and code-based queries over large integration codebases. Leveraged transformer models, vector search, and custom ranking to deliver relevant results for developer productivity.",
+      technologies: ["TypeScript", "WSO2 Micro Integrator","React", "Sentence Transformers", "Vector Search" ],
+      myRole: "As a Software Engineer Intern, I designed and implemented the core semantic search engine, and integrated the solution with the Agentic MI Copilot in WSO2 vscode extension.",
+      status: "Intern Project",
+      gradient: "from-primary to-secondary",
+      githubUrl: "https://github.com/minuraashen/Semantic_tool_check",
+      detailsUrl: "https://medium.com/@minuraashensamaramanna/designing-semantic-code-search-tool-for-wso2-micro-integrator-copilot-part-1-173e26b79635"
+    },
+        {
+      icon: <Cog className="h-6 w-6 sm:h-8 sm:w-8" />,
+      title: "Prebuilt Integration: Export Salesforce Leads to Google Sheets (Devant Platform, BI Copilot)",
+      description: "Developed an automation integration for Devant Platform, enabling business users to export Salesforce leads to Google Sheets using BI Copilot and Ballerina Integrator. Leveraged Ballerina language, Devant Cloud Editor (low-code), and BI Copilot for seamless integration.",
+      technologies: ["Ballerina", "Devant Cloud Editor", "BI Copilot", "Salesforce", "Google Sheets"],
+      myRole: "As a Software Engineer Intern, I designed and implemented the integration logic and automation workflow.",
+      status: "Intern Project",
+      gradient: "from-primary to-accent",
+      githubUrl: "https://github.com/minuraashen/salesforce_leads_to_googlesheet",
+    },
     {
       icon: <Cpu className="h-6 w-6 sm:h-8 sm:w-8" />,
       title: "Strength Training Exercise Recognition System",
@@ -22,7 +44,7 @@ const Projects = () => {
       technologies: ["JavaScript", "React", "MongodB", "Node.js", "Express.js"],
       myRole: "This is an individual project",
       status: "Ongoing",
-      gradient: "from-accent to-primary",
+      gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/minuraashen/MERN_project"
     },
     {
@@ -32,7 +54,7 @@ const Projects = () => {
       myRole: "Implemented ML workflows including data preprocessing, model training, evaluation, and visualization using Python and scikit-learn ecosystem.",
       technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Matplotlib", "Seaborn"],
       status: "Ongoing",
-      gradient: "from-primary to-accent",
+      gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/minuraashen/Machine-Learning"
     },
     {
@@ -42,7 +64,7 @@ const Projects = () => {
       myRole: "Led circuit design and simulation phases, conducted thorough testing procedures, and created detailed technical documentation.",
       technologies: ["Analog Circuit Design", "Signal Processing", "Simulation", "Testing"],
       status: "Completed",
-      gradient: "from-secondary to-secondary/80",
+      gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/minuraashen/Five-Band-Audio-Equilizer",
       detailsUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7346696185018990593/"
     },
@@ -53,7 +75,7 @@ const Projects = () => {
       myRole: "Designed compact power distribution PCB, conducted comprehensive PCB testing, and performed hardware debugging to ensure system reliability.",
       technologies: ["LiDAR", "SLAM", "PCB Design", "Embedded Systems", "Motion Control"],
       status: "Completed",
-      gradient: "from-primary to-primary/80",
+      gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/AMR-Platform"
     },
     {
@@ -63,12 +85,12 @@ const Projects = () => {
       myRole: "Designed amplifier architecture with focus on biasing optimization and thermal compensation circuits for enhanced performance.",
       technologies: ["Analog Design", "Audio Engineering", "Thermal Compensation", "Low-Noise Design"],
       status: "Completed",
-      gradient: "from-secondary to-primary"
+      gradient: "from-primary to-secondary"
     }
   ];
 
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30" data-aos="fade-up">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12 sm:mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 px-2">
@@ -81,29 +103,38 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => (
-            <Card 
-              key={index} 
-              className="bg-card border-border hover:shadow-glow transition-all duration-500 hover:scale-[1.02] group animate-scale-in overflow-hidden" 
-              style={{
-                animationDelay: `${index * 0.2}s`
-              }}
+            <Card
+              key={index}
+              className={`relative bg-card border-border rounded-3xl hover:shadow-glow transition-all duration-500 group animate-scale-in overflow-hidden`}
+              style={{ animationDelay: `${index * 0.16}s` }}
+              data-aos="fade-up"
+              data-aos-delay={100 + index * 100}
             >
               <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
-              
-              <CardHeader className="p-4 sm:p-6">
+
+
+              <CardHeader className="p-4 sm:p-6 relative z-10">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-3 sm:gap-4 flex-1">
                     <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-r ${project.gradient} text-white flex-shrink-0`}>
                       {project.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <CardTitle className="text-lg sm:text-xl group-hover:text-primary transition-colors leading-tight">
+                      <CardTitle className="text-lg sm:text-xl group-hover:text-primary transition-colors leading-tight font-heading">
                         {project.title}
                       </CardTitle>
                       <div className="flex items-center gap-2 mt-2">
-                        <Badge 
-                          variant={project.status === "Completed" ? "default" : "secondary"} 
-                          className={`text-xs ${project.status === "Completed" ? "bg-green-600" : "bg-yellow-600"}`}
+                        <Badge
+                          variant="default"
+                          className={`text-xs rounded-full ${
+                            project.status === "Completed"
+                              ? "bg-green-600"
+                              : project.status === "Ongoing"
+                              ? "bg-yellow-600"
+                              : project.status === "Intern Project"
+                              ? "bg-blue-800"
+                              : "bg-muted"
+                          }`}
                         >
                           {project.status}
                         </Badge>
@@ -113,7 +144,7 @@ const Projects = () => {
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0">
+              <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0 relative z-10">
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                   {project.description}
                 </p>
@@ -129,12 +160,12 @@ const Projects = () => {
 
                 <div className="space-y-2 sm:space-y-3">
                   <h4 className="font-semibold text-xs sm:text-sm uppercase tracking-wide">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
-                      <Badge 
-                        key={techIndex} 
-                        variant="outline" 
-                        className="border-primary/20 text-foreground hover:bg-primary/10 text-xs"
+                      <Badge
+                        key={techIndex}
+                        variant="outline"
+                        className="bg-muted text-foreground px-3 py-1 rounded-full text-xs"
                       >
                         {tech}
                       </Badge>
@@ -144,10 +175,10 @@ const Projects = () => {
 
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2 sm:pt-4">
                   {project.detailsUrl ? (
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
-                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-xs sm:text-sm" 
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-xs sm:text-sm"
                       asChild
                     >
                       <a href={project.detailsUrl} target="_blank" rel="noopener noreferrer">
@@ -156,10 +187,10 @@ const Projects = () => {
                       </a>
                     </Button>
                   ) : (
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
-                      className="border-primary text-primary opacity-50 cursor-not-allowed text-xs sm:text-sm" 
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-primary text-primary opacity-50 cursor-not-allowed text-xs sm:text-sm"
                       disabled
                     >
                       <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
@@ -167,10 +198,10 @@ const Projects = () => {
                     </Button>
                   )}
                   {project.githubUrl ? (
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
-                      className="border-muted-foreground text-muted-foreground hover:bg-muted text-xs sm:text-sm" 
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-muted-foreground text-muted-foreground hover:bg-muted text-xs sm:text-sm"
                       asChild
                     >
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
@@ -179,10 +210,10 @@ const Projects = () => {
                       </a>
                     </Button>
                   ) : (
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
-                      className="border-muted-foreground text-muted-foreground opacity-50 cursor-not-allowed text-xs sm:text-sm" 
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-muted-foreground text-muted-foreground opacity-50 cursor-not-allowed text-xs sm:text-sm"
                       disabled
                     >
                       <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
