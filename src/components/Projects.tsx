@@ -1,230 +1,408 @@
-import { ExternalLink, Github, Cpu, Volume2, Navigation, Mic, Brain, Image, Cog } from "lucide-react";
+import React, { useState } from "react";
+import { ExternalLink, Github, Cpu, Volume2, Navigation, Mic, Brain, Image, Cog, ChevronDown, ChevronUp } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+
+// Import generated placeholder images
+import wso2SemanticImg from "@/assets/wso2_semantic_search.png";
+import salesforceImg from "@/assets/salesforce_integration.png";
 
 const Projects = () => {
-  const projects = [
+  const [filter, setFilter] = useState("all");
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
+  const projects = [
     {
-      icon: <Brain className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "Semantic Code Search Tool for WSO2 Micro Integrator Copilot (Intern Project)",
-      description: "Developed an AI-powered semantic code search tool for WSO2 Micro Integrator Copilot, enabling natural language and code-based queries over large integration codebases. Leveraged transformer models, vector search, and custom ranking to deliver relevant results for developer productivity.",
-      technologies: ["TypeScript", "WSO2 Micro Integrator","React", "Sentence Transformers", "Vector Search" ],
-      myRole: "As a Software Engineer Intern, I designed and implemented the core semantic search engine, and integrated the solution with the Agentic MI Copilot in WSO2 vscode extension.",
-      status: "Intern Project",
-      gradient: "from-primary to-secondary",
-      githubUrl: "https://github.com/minuraashen/Semantic_tool_check",
-      detailsUrl: "https://medium.com/@minuraashensamaramanna/designing-semantic-code-search-tool-for-wso2-micro-integrator-copilot-part-1-173e26b79635"
-    },
-        {
-      icon: <Cog className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "Prebuilt Integration: Export Salesforce Leads to Google Sheets (Devant Platform, BI Copilot)",
-      description: "Developed an automation integration for Devant Platform, enabling business users to export Salesforce leads to Google Sheets using BI Copilot and Ballerina Integrator. Leveraged Ballerina language, Devant Cloud Editor (low-code), and BI Copilot for seamless integration.",
-      technologies: ["Ballerina", "Devant Cloud Editor", "BI Copilot", "Salesforce", "Google Sheets"],
-      myRole: "As a Software Engineer Intern, I designed and implemented the integration logic and automation workflow.",
+      id: 0,
+      icon: <Brain className="h-6 w-6 sm:h-7 sm:w-7" />,
+      title: "Semantic Code Search Tool for WSO2 Micro Integrator Copilot",
+      description: "An AI-powered semantic code search tool enabling intent-aware search and multi-workspace support over integration Configurations. Leveraged sentence transformers, vector indexing, and custom ranking inside the Agentic MI Copilot VS Code extension.",
+      technologies: ["TypeScript", "WSO2 Micro Integrator", "React", "Sentence Transformers", "Vector Search"],
+      myRole: "As a Software Engineer Intern, I designed and implemented the core semantic search engine, created custom embeddings, and integrated the solution with the WSO2 VS Code Extension chatbot.",
       status: "Intern Project",
       gradient: "from-primary to-accent",
-      githubUrl: "https://github.com/minuraashen/salesforce_leads_to_googlesheet",
+      githubUrl: "https://github.com/minuraashen/Semantic_tool_check",
+      detailsUrl: "https://medium.com/@minuraashensamaramanna/designing-semantic-code-search-tool-for-wso2-micro-integrator-copilot-part-1-173e26b79635",
+      tags: ["intern", "ai-ml", "software"],
+      image: wso2SemanticImg,
+      featured: true
     },
     {
-      icon: <Cpu className="h-6 w-6 sm:h-8 sm:w-8" />,
+      id: 1,
+      icon: <Cog className="h-6 w-6 sm:h-7 sm:w-7" />,
+      title: "Export Salesforce Leads to Google Sheets Prebuilt Integration",
+      description: "An automation pipeline designed for the Devant Platform, enabling low-code/no-code users to export Salesforce leads directly to Google Sheets using BI Copilot and Ballerina Integrator workflows.",
+      technologies: ["Ballerina", "Devant Cloud Editor", "BI Copilot", "Salesforce", "Google Sheets"],
+      myRole: "As a Software Engineer Intern, I designed the integration logic and configured the low-code template mappings for business user deployments.",
+      status: "Intern Project",
+      gradient: "from-accent to-secondary",
+      githubUrl: "https://github.com/minuraashen/salesforce_leads_to_googlesheet",
+      tags: ["intern", "software"],
+      image: salesforceImg,
+      featured: true
+    },
+    {
+      id: 2,
+      icon: <Cpu className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Strength Training Exercise Recognition System",
-      description: "Developed a context-aware strength training tracker using wristband accelerometer and gyroscope data. Applied supervised learning algorithms to classify exercises, count repetitions. Collected and processed multi-participant sensor dataset for model training and evaluation sessions.",
+      description: "A context-aware fitness tracker analyzing wristband accelerometer and gyroscope telemetry. Applies supervised learning models to classify workout exercises and count repetitions.",
       technologies: ["Python", "Numpy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
-      myRole: "This is an individual project",
+      myRole: "Conducted raw sensor dataset collection, preprocessed noise, performed feature engineering, and trained Random Forest/SVM classifiers.",
       status: "Completed",
       gradient: "from-primary to-secondary",
-      githubUrl: "https://github.com/minuraashen/Fitness_tracker_ML_project"
+      githubUrl: "https://github.com/minuraashen/Fitness_tracker_ML_project",
+      tags: ["ai-ml"],
+      featured: false
     },
     {
-      icon: <Image className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "Full-Stack E-Commerce Application using MERN",
-      description: "Developing a responsive e-commerce app with MongoDB, Express.js, React, and Node.js. Building the frontend using React and Chakra UI for modern, reusable components. Implementing backend APIs for authentication, product management, and checkout flow.",
-      technologies: ["JavaScript", "React", "MongodB", "Node.js", "Express.js"],
-      myRole: "This is an individual project",
+      id: 3,
+      icon: <Image className="h-6 w-6 sm:h-7 sm:w-7" />,
+      title: "Full-Stack E-Commerce Application",
+      description: "A responsive commerce platform using MongoDB, Express.js, React, and Node.js. Incorporates Chakra UI blocks, JWT auth flows, and checkout endpoints.",
+      technologies: ["JavaScript", "React", "MongoDB", "Node.js", "Express.js", "Chakra UI"],
+      myRole: "Sole developer responsible for API routing, user session state management, database schema design, and responsive frontend grids.",
       status: "Ongoing",
       gradient: "from-primary to-secondary",
-      githubUrl: "https://github.com/minuraashen/MERN_project"
+      githubUrl: "https://github.com/minuraashen/MERN_project",
+      tags: ["software"],
+      featured: false
     },
     {
-      icon: <Brain className="h-6 w-6 sm:h-8 sm:w-8" />,
-      title: "Machine Learning Projects",
-      description: "A collection of beginner-level machine learning projects to build a strong foundation in supervised learning. I am still learning and have just begun my journey into Machine Learning. This repository contains my beginner-level projects as I explore and improve my skills.",
-      myRole: "Implemented ML workflows including data preprocessing, model training, evaluation, and visualization using Python and scikit-learn ecosystem.",
-      technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Matplotlib", "Seaborn"],
+      id: 4,
+      icon: <Brain className="h-6 w-6 sm:h-7 sm:w-7" />,
+      title: "Supervised Machine Learning Repository",
+      description: "A comprehensive foundation repository compiling ML pipelines, exploratory data analysis templates, and model validation code.",
+      technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Matplotlib"],
+      myRole: "Implemented standard engineering tasks: data cleaning, cross-validation scoring, and feature correlation studies.",
       status: "Ongoing",
       gradient: "from-primary to-secondary",
-      githubUrl: "https://github.com/minuraashen/Machine-Learning"
+      githubUrl: "https://github.com/minuraashen/Machine-Learning",
+      tags: ["ai-ml", "software"],
+      featured: false
     },
     {
-      icon: <Volume2 className="h-6 w-6 sm:h-8 sm:w-8" />,
+      id: 5,
+      icon: <Volume2 className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Five-Band Audio Equalizer",
-      description: "Designed filters for desired frequency bands in a five-band audio equalizer. Developed and simulated the complete analog circuit for the equalizer. Tested and debugged the final hardware implementation to ensure desired performance.",
-      myRole: "Led circuit design and simulation phases, conducted thorough testing procedures, and created detailed technical documentation.",
-      technologies: ["Analog Circuit Design", "Signal Processing", "Simulation", "Testing"],
+      description: "A complete hardware implementation of an analog five-band audio equalizer. Designed active filters, simulated band responses, and troubleshot circuit gains.",
+      technologies: ["Analog Circuit Design", "Signal Processing", "LTSpice", "Hardware Testing"],
+      myRole: "Designed the schematic, performed frequency sweep simulations in LTSpice, built physical PCB circuits, and calibrated signal outputs.",
       status: "Completed",
       gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/minuraashen/Five-Band-Audio-Equilizer",
-      detailsUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7346696185018990593/"
+      detailsUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7346696185018990593/",
+      tags: ["hardware"],
+      featured: false
     },
     {
-      icon: <Navigation className="h-6 w-6 sm:h-8 sm:w-8" />,
+      id: 6,
+      icon: <Navigation className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Autonomous Mobile Robot (AMR)",
-      description: "Advanced modular robot with LiDAR obstacle detection, SLAM navigation, and closed-loop motion control featuring embedded telemetry and custom UI interface.",
-      myRole: "Designed compact power distribution PCB, conducted comprehensive PCB testing, and performed hardware debugging to ensure system reliability.",
+      description: "A modular navigation robot implementing LiDAR slam obstacles detection, closed-loop telemetry, and dynamic motor controls.",
       technologies: ["LiDAR", "SLAM", "PCB Design", "Embedded Systems", "Motion Control"],
+      myRole: "Designed and tested the compact power distribution PCB layout, ensuring low-noise telemetry routes and stable voltages.",
       status: "Completed",
       gradient: "from-primary to-secondary",
-      githubUrl: "https://github.com/AMR-Platform"
+      githubUrl: "https://github.com/AMR-Platform",
+      tags: ["hardware"],
+      featured: false
     },
     {
-      icon: <Mic className="h-6 w-6 sm:h-8 sm:w-8" />,
+      id: 7,
+      icon: <Mic className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Microphone Preamp with Class AB Amplifier",
-      description: "High-fidelity low-noise audio amplifier design with advanced biasing techniques and thermal compensation for professional audio applications.",
-      myRole: "Designed amplifier architecture with focus on biasing optimization and thermal compensation circuits for enhanced performance.",
-      technologies: ["Analog Design", "Audio Engineering", "Thermal Compensation", "Low-Noise Design"],
+      description: "High-fidelity, low-noise audio amplifier featuring thermal compensation circuits and optimized biasing for clear sound delivery.",
+      technologies: ["Analog Design", "Audio Engineering", "Thermal Compensation", "Biasing Circuitry"],
+      myRole: "Calculated static transistor biasing values, modeled thermal stability circuits, and simulated THD (Total Harmonic Distortion).",
       status: "Completed",
-      gradient: "from-primary to-secondary"
+      gradient: "from-primary to-secondary",
+      tags: ["hardware"],
+      featured: false
     }
   ];
 
+  const filterTabs = [
+    { label: "All Work", value: "all" },
+    { label: "Internships", value: "intern" },
+    { label: "AI & Machine Learning", value: "ai-ml" },
+    { label: "Software & Web", value: "software" },
+    { label: "Hardware & Robotics", value: "hardware" }
+  ];
+
+  const filteredProjects = projects.filter(
+    (project) => filter === "all" || project.tags.includes(filter)
+  );
+
+  const toggleExpand = (id: number) => {
+    setExpandedIndex(expandedIndex === id ? null : id);
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "Completed":
+        return "bg-emerald-500/10 text-emerald-500 border-emerald-500/20";
+      case "Ongoing":
+        return "bg-amber-500/10 text-amber-500 border-amber-500/20";
+      case "Intern Project":
+        return "bg-blue-500/10 text-blue-500 border-blue-500/20";
+      default:
+        return "bg-muted text-muted-foreground border-border";
+    }
+  };
+
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30" data-aos="fade-up">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 px-2">
-            Featured <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            A showcase of innovative engineering solutions spanning machine learning, computer vision, electronics, and embedded systems
-          </p>
+    <section id="projects" className="py-20 px-4 md:px-6 lg:px-8 bg-muted/20 relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-heading font-semibold mb-4 text-foreground">
+              Featured <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              A curated showcase of engineering builds spanning AI/ML applications, low-code systems, and analog circuitry.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8">
-          {projects.map((project, index) => (
-            <Card
-              key={index}
-              className={`relative bg-card border-border rounded-3xl hover:shadow-glow transition-all duration-500 group animate-scale-in overflow-hidden`}
-              style={{ animationDelay: `${index * 0.16}s` }}
-              data-aos="fade-up"
-              data-aos-delay={100 + index * 100}
+        {/* Filter Navigation Bar */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {filterTabs.map((tab) => (
+            <button
+              key={tab.value}
+              onClick={() => {
+                setFilter(tab.value);
+                setExpandedIndex(null);
+              }}
+              className={`relative px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-colors duration-300 ${
+                filter === tab.value
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
             >
-              <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
+              {filter === tab.value && (
+                <motion.div
+                  layoutId="activeFilterIndicator"
+                  className="absolute inset-0 bg-gradient-primary rounded-full -z-10"
+                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                />
+              )}
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-
-              <CardHeader className="p-4 sm:p-6 relative z-10">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-3 sm:gap-4 flex-1">
-                    <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-r ${project.gradient} text-white flex-shrink-0`}>
-                      {project.icon}
+        <LayoutGroup>
+          <motion.div layout className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Top Level Featured Projects Spotlight */}
+            {filteredProjects.filter(p => p.featured).map((project) => (
+              <motion.div 
+                layout 
+                key={project.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="lg:col-span-12"
+              >
+                <Card className="glass-card border border-border/30 overflow-hidden hover:border-primary/20 hover:shadow-glow transition-all duration-500 group rounded-3xl">
+                  <div className="grid grid-cols-1 lg:grid-cols-12">
+                    {/* Visual Graphic representation */}
+                    <div className="lg:col-span-5 relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-border/30 h-64 sm:h-80 lg:h-full min-h-[300px]">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent lg:hidden" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <CardTitle className="text-lg sm:text-xl group-hover:text-primary transition-colors leading-tight font-heading">
-                        {project.title}
-                      </CardTitle>
-                      <div className="flex items-center gap-2 mt-2">
-                        <Badge
-                          variant="default"
-                          className={`text-xs rounded-full ${
-                            project.status === "Completed"
-                              ? "bg-green-600"
-                              : project.status === "Ongoing"
-                              ? "bg-yellow-600"
-                              : project.status === "Intern Project"
-                              ? "bg-blue-800"
-                              : "bg-muted"
-                          }`}
-                        >
-                          {project.status}
-                        </Badge>
+
+                    {/* Project details */}
+                    <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <Badge variant="outline" className={`rounded-full px-3 py-1 font-semibold text-xs border ${getStatusColor(project.status)}`}>
+                            {project.status}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground flex items-center gap-1.5 font-medium">
+                            Featured Spotlight
+                          </span>
+                        </div>
+
+                        <CardTitle className="text-xl sm:text-2xl font-heading leading-tight group-hover:text-primary transition-colors font-semibold">
+                          {project.title}
+                        </CardTitle>
+
+                        <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        <div className="space-y-2 border-l-2 border-primary/20 pl-4 py-1">
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary">My Contribution</h4>
+                          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                            {project.myRole}
+                          </p>
+                        </div>
+
+                        <div className="space-y-2">
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground">Technologies</h4>
+                          <div className="flex flex-wrap gap-1.5">
+                            {project.technologies.map((tech) => (
+                              <Badge key={tech} variant="outline" className="bg-muted text-foreground border-border/60 rounded-full px-2.5 py-1 text-xs">
+                                {tech}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-3 pt-6 border-t border-border/20 mt-6">
+                        {project.detailsUrl && (
+                          <Button size="sm" className="bg-gradient-primary hover:opacity-90 text-primary-foreground rounded-full text-xs px-4" asChild>
+                            <a href={project.detailsUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-3.5 h-3.5 mr-2" />
+                              Read Project Story
+                            </a>
+                          </Button>
+                        )}
+                        {project.githubUrl && (
+                          <Button size="sm" variant="outline" className="border-border hover:bg-muted text-foreground rounded-full text-xs px-4" asChild>
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="w-3.5 h-3.5 mr-2" />
+                              Explore Code
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
-                </div>
-              </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
 
-              <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0 relative z-10">
-                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  {project.description}
-                </p>
+            {/* Standard Secondary Projects Grid */}
+            {filteredProjects.filter(p => !p.featured).map((project) => {
+              const isExpanded = expandedIndex === project.id;
+              return (
+                <motion.div
+                  layout
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
+                  className="lg:col-span-6"
+                >
+                  <Card className="h-full glass-card border border-border/30 hover:border-primary/20 hover:shadow-glow transition-all duration-500 group flex flex-col justify-between overflow-hidden rounded-3xl">
+                    <div>
+                      <div className={`h-[4px] bg-gradient-to-r ${project.gradient}`} />
+                      
+                      <CardHeader className="p-6">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex items-center gap-3">
+                            <div className="p-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20 flex-shrink-0">
+                              {project.icon}
+                            </div>
+                            <div>
+                              <CardTitle className="text-lg font-heading leading-tight group-hover:text-primary transition-colors font-semibold">
+                                {project.title}
+                              </CardTitle>
+                              <Badge variant="outline" className={`mt-2 rounded-full px-2.5 py-0.5 text-[10px] sm:text-xs border ${getStatusColor(project.status)}`}>
+                                {project.status}
+                              </Badge>
+                            </div>
+                          </div>
+                        </div>
+                      </CardHeader>
 
-                <div className="space-y-2 sm:space-y-3">
-                  <h4 className="font-semibold text-xs sm:text-sm uppercase tracking-wide text-primary">
-                    My Role & Contribution
-                  </h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed bg-muted/50 p-2 sm:p-3 rounded-lg">
-                    {project.myRole}
-                  </p>
-                </div>
+                      <CardContent className="px-6 pb-2 space-y-4">
+                        <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                          {project.description}
+                        </p>
 
-                <div className="space-y-2 sm:space-y-3">
-                  <h4 className="font-semibold text-xs sm:text-sm uppercase tracking-wide">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <Badge
-                        key={techIndex}
-                        variant="outline"
-                        className="bg-muted text-foreground px-3 py-1 rounded-full text-xs"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
+                        {/* Inline Expandable Contribution Details */}
+                        <div className="border-t border-border/20 pt-3">
+                          <button
+                            onClick={() => toggleExpand(project.id)}
+                            className="flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider"
+                          >
+                            <span>My Contribution & Role</span>
+                            {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                          </button>
 
-                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2 sm:pt-4">
-                  {project.detailsUrl ? (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-xs sm:text-sm"
-                      asChild
-                    >
-                      <a href={project.detailsUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                        View Details
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-primary text-primary opacity-50 cursor-not-allowed text-xs sm:text-sm"
-                      disabled
-                    >
-                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                      View Details
-                    </Button>
-                  )}
-                  {project.githubUrl ? (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-muted-foreground text-muted-foreground hover:bg-muted text-xs sm:text-sm"
-                      asChild
-                    >
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                        Source Code
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-muted-foreground text-muted-foreground opacity-50 cursor-not-allowed text-xs sm:text-sm"
-                      disabled
-                    >
-                      <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                      Source Code
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                          <AnimatePresence initial={false}>
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.25 }}
+                                className="overflow-hidden"
+                              >
+                                <p className="text-xs text-muted-foreground bg-muted/40 p-3 rounded-xl border border-border/30 leading-relaxed mt-2">
+                                  {project.myRole}
+                                </p>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+
+                        <div className="space-y-1.5 pt-1">
+                          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-foreground">Technologies</span>
+                          <div className="flex flex-wrap gap-1">
+                            {project.technologies.map((tech) => (
+                              <Badge key={tech} variant="outline" className="bg-muted text-foreground border-border/50 rounded-full px-2 py-0.5 text-[10px] sm:text-xs">
+                                {tech}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </div>
+
+                    <CardContent className="p-6 pt-2">
+                      <div className="flex gap-2 pt-3 border-t border-border/20">
+                        {project.detailsUrl ? (
+                          <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full text-xs flex-1" asChild>
+                            <a href={project.detailsUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                              View Link
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button size="sm" variant="outline" className="border-border text-muted-foreground opacity-50 cursor-not-allowed rounded-full text-xs flex-1" disabled>
+                            <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                            No Story
+                          </Button>
+                        )}
+
+                        {project.githubUrl ? (
+                          <Button size="sm" variant="outline" className="border-border hover:bg-muted text-foreground rounded-full text-xs flex-1" asChild>
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="w-3.5 h-3.5 mr-1.5" />
+                              Source
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button size="sm" variant="outline" className="border-border text-muted-foreground opacity-50 cursor-not-allowed rounded-full text-xs flex-1" disabled>
+                            <Github className="w-3.5 h-3.5 mr-1.5" />
+                            No Code
+                          </Button>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </LayoutGroup>
       </div>
     </section>
   );
