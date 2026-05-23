@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GraduationCap, Award, Users, Target, Calendar, Briefcase, BookOpen } from "lucide-react";
+import { GraduationCap, Award, Users, Target, Calendar, Briefcase, BookOpen, Compass, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
@@ -298,7 +298,14 @@ const About = () => {
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                           <div>
                             <h4 className="text-xl font-semibold text-foreground font-heading">{item.role}</h4>
-                            <p className="text-primary text-sm font-medium mt-1">{item.company}</p>
+                            <div className="flex items-center gap-2 mt-1.5">
+                              {item.company === "WSO2 LLC" ? (
+                                <span className="flex items-center justify-center font-heading font-black text-[9px] text-white bg-[#FF5000] rounded px-1.5 py-0.5 leading-none tracking-tight">
+                                  wso2
+                                </span>
+                              ) : null}
+                              <p className="text-primary text-sm font-medium">{item.company}</p>
+                            </div>
                           </div>
                           <Badge variant="outline" className="w-fit text-xs bg-primary/5 text-primary flex items-center gap-1.5 px-3 py-1 border-primary/10 rounded-full font-medium">
                             <Calendar className="h-3 w-3" />

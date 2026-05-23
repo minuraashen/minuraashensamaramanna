@@ -5,6 +5,9 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import TechnicalWriting from "@/components/TechnicalWriting";
+import ExtraCurricular from "@/components/ExtraCurricular";
+import TravelLog from "@/components/TravelLog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -49,6 +52,9 @@ const Index = () => {
       <About />
       <Skills />
       <Projects />
+      <TechnicalWriting />
+      <ExtraCurricular />
+      <TravelLog />
       <Contact />
       <Footer />
     </div>
@@ -56,4 +62,3 @@ const Index = () => {
 };
 
 export default Index;
-
