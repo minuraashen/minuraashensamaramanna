@@ -11,6 +11,19 @@ export const sendEmail = async (data: {
   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID;
 
+  // Validate environment configuration early to fail fast with a clear error
+  const missing: string[] = [];
+  if (!SERVICE_ID) missing.push('VITE_EMAILJS_SERVICE_ID');
+  if (!TEMPLATE_ID) missing.push('VITE_EMAILJS_TEMPLATE_ID');
+  if (!USER_ID) missing.push('VITE_EMAILJS_USER_ID');
+
+  if (missing.length > 0) {
+    throw new Error(
+      `Missing EmailJS environment variables: ${missing.join(', ')}. ` +
+        'Set them in your environment (e.g. .env) and restart the dev server.'
+    );
+  }
+
   const templateParams = {
     from_name: data.name,
     from_email: data.email,
@@ -18,5 +31,5 @@ export const sendEmail = async (data: {
     message: data.message,
   };
 
-  return emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID);
+  return emailjs.send(SERVICE_ID as string, TEMPLATE_ID as string, templateParams, USER_ID as string);
 };

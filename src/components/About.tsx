@@ -291,7 +291,6 @@ const About = () => {
                           <div>
                             <h4 className="text-xl font-semibold text-foreground font-heading">{item.role}</h4>
                             <div className="flex items-center gap-2 mt-1.5">
-                              {item.company === "WSO2 LLC"}
                               <p className="text-primary text-sm font-medium">{item.company}</p>
                             </div>
                           </div>

@@ -67,17 +67,20 @@ All colors MUST be HSL.
     --popover: 230 16% 10%;
     --popover-foreground: 210 20% 96%;
 
-    --primary: 14 100% 66%; /* peach remains slightly brighter */
-    --primary-foreground: 230 16% 10%;
+     /* Preserve the original accent colors (expressed in HSL) so Tailwind
+       utilities match the previous hard-coded hex values but remain driven
+       by CSS variables. */
+     --primary: 177 63% 48%; /* matches #2ec4b6 */
+     --primary-foreground: 230 16% 10%;
 
-    --secondary: 275 18% 56%; /* purple accent tuned for dark */
-    --secondary-foreground: 210 20% 96%;
+     --secondary: 192 20% 90%; /* matches #e0fbfc */
+     --secondary-foreground: 210 20% 96%;
 
-    --muted: 230 12% 18%;
-    --muted-foreground: 210 40% 80%;
+     --muted: 230 12% 18%;
+     --muted-foreground: 210 40% 80%;
 
-    --accent: 36 92% 12%;
-    --accent-foreground: 210 20% 96%;
+     --accent: 177 63% 60%; /* matches #3aafa9 */
+     --accent-foreground: 210 20% 96%;
 
     --destructive: 0 62% 46%;
     --destructive-foreground: 210 40% 98%;
@@ -150,4 +153,4 @@ All colors MUST be HSL.
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary));
   }
-}
+}
