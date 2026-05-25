@@ -8,96 +8,95 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark theme portfolio colors */
-    --background: 220 13% 7%;
-    --foreground: 210 20% 95%;
+    /* Light theme - COZYDIADORA-inspired palette */
+    --background: 180 60% 98%; /* very light teal/cream */
+    --foreground: 210 15% 18%; /* deep blue text */
 
-    --card: 220 13% 10%;
-    --card-foreground: 210 20% 95%;
+    --card: 180 60% 100%;
+    --card-foreground: 210 15% 18%;
 
-    --popover: 220 13% 10%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 180 60% 100%;
+    --popover-foreground: 210 15% 18%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 13% 7%;
+    --primary: 177 63% 48%; /* teal/greenish-blue */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 320 100% 80%;
-    --secondary-foreground: 220 13% 7%;
+    --secondary: 192 20% 90%; /* soft blue-gray */
+    --secondary-foreground: 210 15% 18%;
 
-    --muted: 220 13% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 180 20% 94%;
+    --muted-foreground: 210 7% 40%;
 
-    --accent: 320 100% 80%;
-    --accent-foreground: 220 13% 7%;
+    --accent: 177 63% 60%; /* lighter teal accent */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 20%;
-    --input: 220 13% 15%;
-    --ring: 217 91% 60%;
+    --border: 180 15% 88%;
+    --input: 180 15% 96%;
+    --ring: 177 63% 48%;
 
-    /* Custom portfolio colors */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(320 100% 80%));
-    --gradient-card: linear-gradient(135deg, hsl(220 13% 10%), hsl(220 13% 12%));
-    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.15);
-    --shadow-card: 0 10px 30px -10px hsl(220 13% 5% / 0.8);
+    /* Custom portfolio gradients and shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(177 63% 48%), hsl(177 63% 60%));
+    --gradient-card: linear-gradient(135deg, hsl(180 60% 100%), hsl(180 60% 98%));
+    --shadow-glow: 0 0 40px hsl(177 63% 48% / 0.12);
+    --shadow-card: 0 10px 30px -10px hsl(210 10% 10% / 0.08);
     
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
+    --sidebar-background: 180 60% 98%;
+    --sidebar-foreground: 210 15% 18%;
+    --sidebar-primary: 177 63% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 177 63% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 180 15% 88%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode palette matching cozy theme */
+    --background: 230 16% 8%; /* deep navy/charcoal */
+    --foreground: 210 20% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 230 16% 10%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 230 16% 10%;
+    --popover-foreground: 210 20% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+     /* Preserve the original accent colors (expressed in HSL) so Tailwind
+       utilities match the previous hard-coded hex values but remain driven
+       by CSS variables. */
+     --primary: 177 63% 48%; /* matches #2ec4b6 */
+     --primary-foreground: 230 16% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+     --secondary: 192 20% 90%; /* matches #e0fbfc */
+     --secondary-foreground: 210 20% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+     --muted: 230 12% 18%;
+     --muted-foreground: 210 40% 80%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+     --accent: 177 63% 60%; /* matches #3aafa9 */
+     --accent-foreground: 210 20% 96%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62% 46%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 230 12% 14%;
+    --input: 230 12% 14%;
+    --ring: 14 100% 64%;
+
+    --sidebar-background: 230 14% 6%;
+    --sidebar-foreground: 210 20% 96%;
+    --sidebar-primary: 14 100% 64%;
+    --sidebar-primary-foreground: 230 14% 8%;
+    --sidebar-accent: 275 18% 46%;
+    --sidebar-accent-foreground: 230 14% 8%;
+    --sidebar-border: 230 12% 14%;
+    --sidebar-ring: 14 100% 64%;
   }
 }
 
@@ -116,5 +115,42 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background-color: hsl(var(--card) / 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.4);
+  }
+
+  .glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card-hover:hover {
+    background-color: hsl(var(--card) / 0.7);
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 20px 40px -15px hsl(var(--primary) / 0.12);
+    transform: translateY(-4px);
+  }
+
+  /* Custom Premium Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.25);
+    border-radius: 99px;
+    border: 2px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
   }
 }

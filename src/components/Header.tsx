@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "./ThemeToggle";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = [{
@@ -39,9 +40,12 @@ const Header = () => {
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>)}
-            <Button variant="outline" onClick={() => scrollToSection("#contact")} className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              Get In Touch
-            </Button>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <Button variant="outline" onClick={() => scrollToSection("#contact")} className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                Get In Touch
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
