@@ -15,6 +15,24 @@ const ExtraCurricular = () => {
       gradient: "from-orange-500 to-rose-500"
     },
     {
+      title: "Sillicon Pulse Analog Electronics Competition",
+      category: "Technical Competition",
+      description: "Secured 2nd place in the Sillicon Pulse Analog Electronics Competition, showcasing strong circuit design and problem-solving skills.",
+      date: "2024",
+      location: "SLTC University",
+      icon: <Flame className="h-6 w-6" />,
+      gradient: "from-orange-500 to-rose-500"
+    },
+    {
+      title: "Intern Events at WSO2",
+      category: "Intern Event",
+      description: "Futsal tournament and News paper fashion show organized by WSO2 for their interns. That was filled with fun and bonding with fellow interns.",
+      date: "April 2026",
+      location: "WSO2 Premises",
+      icon: <Users className="h-6 w-6" />,
+      gradient: "from-blue-500 to-indigo-500"
+    },
+    {
       title: "ENTC Batch Trip",
       category: "Batch Event",
       description: "ENTC 1st year batch trip to Riverston, a great experience filled with fun, bonding, and unforgettable memories.",

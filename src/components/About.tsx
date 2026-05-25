@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GraduationCap, Award, Users, Target, Calendar, Briefcase, BookOpen, Compass, ExternalLink } from "lucide-react";
+import wso2Logo from "@/assets/wso2logo.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
@@ -14,12 +15,12 @@ const About = () => {
       period: "Nov 2025 - May 2026",
       details: [
         {
-          title: "Semantic Search Tool for MI Copilot",
-          desc: "Developed a semantic code search tool for MI Copilot, enabling intent-aware search and multi-workspace support for integration configurations. Leveraged transformer models, vector search, and custom ranking to deliver relevant results for developer productivity."
+          title: "Semantic Search Tool for WSO2 Micro Integrator Copilot",
+          desc: "Developed a semantic code search tool for WSO2 MI Copilot, enabling intent-aware search and multi-workspace support for integration configurations with minimal token usage. Leveraged transformer models, vector search to deliver relevant results for developer productivity."
         },
         {
           title: "Export Salesforce Leads to Google Sheets Prebuilt Integration",
-          desc: "Created a prebuilt integration to automate exporting Salesforce leads to Google Sheets using BI Copilot and Ballerina Integrator for business users."
+          desc: "Created a prebuilt integration to automate exporting Salesforce leads to Google Sheets using Ballerina Integrator for business users."
         }
       ]
     }
@@ -33,7 +34,7 @@ const About = () => {
       grade: "CGPA: 3.93/4.0",
       achievements: [
         "Dean's List for Semesters 1, 2, 4, and 5",
-        "Focused on computer vision, machine learning, and hardware co-design"
+        "Focused on computer vision, machine learning, and Software Development"
       ]
     },
     {
@@ -83,7 +84,7 @@ const About = () => {
               About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              I am an Electronic and Telecommunication Engineering undergraduate passionate about mathematics, AI, and software systems, engineering solutions that bridge theoretical beauty and raw efficiency.
+                I am an Electronic and Telecommunication Engineering undergraduate passionate about mathematics and emerging technologies, with a mission to acquire knowledge, approach problems creatively, and develop solutions that are both practical and efficient, grounded in rigorous mathematical reasoning and analysis.
             </p>
           </motion.div>
         </div>
@@ -107,17 +108,16 @@ const About = () => {
                 </CardTitle>
                 <div className="text-muted-foreground space-y-4 leading-relaxed text-sm sm:text-base">
                   <p>
-                    I am currently pursuing my B.Sc.(Hons) in Electronic and Telecommunication Engineering at the
-                    University of Moratuwa. I focus on developing systems rooted in mathematical precision, which 
-                    led to a strong academic track record with a CGPA of 3.93/4.0 and honors on the Dean's List.
+                    I'm currently pursuing my B.Sc.(Hons) in Electronic and Telecommunication Engineering at the University of Moratuwa. 
+                    I have maintained strong academic performance with a CGPA of 3.93/4.0 and was named on the Dean's List for Semesters 1, 2, 4 and 5.
                   </p>
                   <p>
-                    My focus lies in bridging theoretical AI architectures with embedded hardware. I am eager to
-                    tackle complex problems in machine learning, computer vision, and high-performance backend systems.
+                    My passion lies in bridging theoretical knowledge with practical applications, 
+                    particularly in machine learning, computer vision, software development and embedded systems. 
+                    I focus on engineering solutions that are technically sound, creatively designed, and mathematically precise.
                   </p>
                   <p>
-                    Beyond code and hardware design, I'm committed to mentoring and sharing my knowledge with the next
-                    generation of aspiring engineers.
+                    Beyond academics, I enjoy tutoring and writing technical articles to encourage the next generation of engineers. I also enjoy traveling and exploring Sri Lanka.
                   </p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ const About = () => {
                 <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent font-heading mb-2">3.93/4.00</div>
                 <div className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Current CGPA</div>
                 <p className="text-muted-foreground text-xs leading-relaxed">
-                  Named on the Dean's List for Semesters 1, 2, 4, and 5 for outstanding academic performance.
+                  Named on the Dean's List for Semesters 1, 2, 4, and 5.
                 </p>
               </CardContent>
             </Card>
@@ -190,17 +190,12 @@ const About = () => {
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-4">
                   <Users className="h-6 w-6" />
                 </div>
-                <CardTitle className="text-lg font-heading">Teaching & Mentoring</CardTitle>
+                <CardTitle className="text-lg font-heading">Teaching</CardTitle>
               </CardHeader>
-              <CardContent className="p-0 mt-4">
+              <CardContent className="p-0 mt-4 flex-grow flex flex-col justify-between">
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   Actively tutoring Advanced Level Physics, Chemistry, and Combined Mathematics.
                 </p>
-                <div className="flex flex-wrap gap-1.5">
-                  <Badge variant="outline" className="bg-primary/5 border-primary/10 text-primary rounded-full text-xs">Physics</Badge>
-                  <Badge variant="outline" className="bg-primary/5 border-primary/10 text-primary rounded-full text-xs">Chemistry</Badge>
-                  <Badge variant="outline" className="bg-primary/5 border-primary/10 text-primary rounded-full text-xs">Mathematics</Badge>
-                </div>
               </CardContent>
             </Card>
           </motion.div>
@@ -219,15 +214,12 @@ const About = () => {
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-4">
                   <Target className="h-6 w-6" />
                 </div>
-                <CardTitle className="text-lg font-heading">Core Principle</CardTitle>
+                <CardTitle className="text-lg font-heading">Problem Solver</CardTitle>
               </CardHeader>
               <CardContent className="p-0 mt-4 flex-grow flex flex-col justify-between">
                 <p className="text-muted-foreground text-sm leading-relaxed mb-2">
-                  Passionate about engineering clean, mathematically rigorous models that deliver practical business results.
+                  Focused on practical, efficient solutions grounded in math
                 </p>
-                <div className="text-xs italic text-primary/80 font-medium border-l-2 border-primary/30 pl-3 py-1">
-                  "Math is the ultimate design tool."
-                </div>
               </CardContent>
             </Card>
           </motion.div>
@@ -289,8 +281,8 @@ const About = () => {
                   {timelineExperience.map((item, index) => (
                     <div key={index} className="relative group">
                       {/* Timeline Node Icon */}
-                      <span className="absolute -left-[39px] sm:-left-[47px] top-1.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300 shadow-sm shadow-primary/20">
-                        <Briefcase className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <span className="absolute -left-[39px] sm:-left-[47px] top-1.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300 shadow-sm shadow-primary/20 overflow-hidden">
+                        <img src={wso2Logo} alt="WSO2" className="w-full h-full object-cover block" />
                       </span>
 
                       {/* Content Card */}
@@ -299,11 +291,7 @@ const About = () => {
                           <div>
                             <h4 className="text-xl font-semibold text-foreground font-heading">{item.role}</h4>
                             <div className="flex items-center gap-2 mt-1.5">
-                              {item.company === "WSO2 LLC" ? (
-                                <span className="flex items-center justify-center font-heading font-black text-[9px] text-white bg-[#FF5000] rounded px-1.5 py-0.5 leading-none tracking-tight">
-                                  wso2
-                                </span>
-                              ) : null}
+                              {item.company === "WSO2 LLC"}
                               <p className="text-primary text-sm font-medium">{item.company}</p>
                             </div>
                           </div>

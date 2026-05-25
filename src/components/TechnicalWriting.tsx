@@ -17,16 +17,16 @@ import {
 const TechnicalWriting = () => {
   const articles = [
     {
-      title: "Designing Semantic Code Search Tool for WSO2 MI Copilot — Part 1",
+      title: "Designing Semantic Code Search Tool for WSO2 MI Copilot—Part 1",
       description: "An in-depth look at implementing structure-aware chunking for XML configurations and the core semantic search vector design for AI assistants.",
       link: "https://medium.com/@minuraashensamaramanna/designing-semantic-code-search-tool-for-wso2-micro-integrator-copilot-part-1-173e26b79635",
-      date: "May 2026",
+      date: "March 2026",
       readTime: "6 min read",
       gradient: "from-primary to-accent",
       image: semanticBlog1Img
     },
     {
-      title: "Designing Semantic Code Search Tool for WSO2 MI Copilot — Part 2",
+      title: "Designing Semantic Code Search Tool for WSO2 MI Copilot—Part 2",
       description: "Details running local ONNX embeddings generators, managing background worker child processes inside VS Code extensions, and designing fault-tolerant fallback agents.",
       link: "https://medium.com/@minuraashensamaramanna/designing-semantic-code-search-tool-for-wso2-micro-integrator-copilot-part-2-faf6fd4b6e83",
       date: "May 2026",
@@ -38,7 +38,7 @@ const TechnicalWriting = () => {
       title: "VS Code Deep Dive: How the World's Most Popular Editor is Built",
       description: "Explores the multi-process architecture of Visual Studio Code, process isolation benefits (Main, Renderer, Extension Host), and the Monaco Editor engine.",
       link: "https://medium.com/@minuraashensamaramanna/vs-code-deep-dive-how-the-worlds-most-popular-editor-is-built-a66a9d451e66",
-      date: "2026",
+      date: "December 2025",
       readTime: "5 min read",
       gradient: "from-secondary to-primary",
       image: vscodeBlogImg
@@ -47,7 +47,7 @@ const TechnicalWriting = () => {
       title: "Vision Language Models: The Missing Sensory Layer of Large Language Models.",
       description: "Explored about Vision Language Models (VLMs) and their role in enhancing Large Language Models (LLMs) with visual understanding, enabling multi-modal AI applications.",
       link: "https://medium.com/@minuraashensamaramanna/vision-language-models-the-missing-sensory-layer-of-large-language-models-dff98ee2c15f",
-      date: "2026",
+      date: "January 2026",
       readTime: "4 min read",
       gradient: "from-secondary to-primary",
       image: vlmBlogImg

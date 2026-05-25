@@ -44,7 +44,7 @@ const Projects = () => {
       id: 1,
       icon: <Cog className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Export Salesforce Leads to Google Sheets Integration",
-      description: "An automation pipeline designed for the Devant Platform, enabling low-code/no-code users to export Salesforce leads directly to Google Sheets using BI Copilot and Ballerina Integrator workflows.",
+      description: "An automation pipeline designed for the Devant Platform, enabling low-code/no-code users to export Salesforce leads directly to Google Sheets using Ballerina Integrator.",
       technologies: ["Ballerina", "Devant Cloud Editor", "BI Copilot", "Salesforce", "Google Sheets"],
       myRole: "As a Software Engineer Intern, I designed the integration logic and configured the low-code template mappings for business user deployments.",
       status: "Intern Project",
@@ -60,7 +60,7 @@ const Projects = () => {
       title: "Exercise Recognition System",
       description: "A context-aware fitness tracker analyzing wristband accelerometer and gyroscope telemetry. Applies supervised learning models to classify workout exercises and count repetitions.",
       technologies: ["Python", "Numpy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
-      myRole: "Conducted raw sensor dataset collection, preprocessed noise, performed feature engineering, and trained Random Forest/SVM classifiers.",
+      myRole: "Conducted raw sensor dataset collection, preprocessed noise, performed feature engineering, and trained Logistic Regression/Decision Tree/Random Forest/SVM/Neural Network classifiers.",
       status: "Completed",
       gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/minuraashen/Fitness_tracker_ML_project",
@@ -74,7 +74,7 @@ const Projects = () => {
       title: "Full-Stack E-Commerce Application",
       description: "A responsive commerce platform using MongoDB, Express.js, React, and Node.js. Incorporates Chakra UI blocks, JWT auth flows, and checkout endpoints.",
       technologies: ["JavaScript", "React", "MongoDB", "Node.js", "Express.js", "Chakra UI"],
-      myRole: "Sole developer responsible for API routing, user session state management, database schema design, and responsive frontend grids.",
+      myRole: "Sole developer responsible for API routing, user session state management, database schema design, and responsive frontend grids. This project was built as a learning exercise to understand full-stack development and MERN architecture.",
       status: "Completed",
       gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/minuraashen/MERN_project",
@@ -88,7 +88,7 @@ const Projects = () => {
       title: "Supervised Machine Learning Repository",
       description: "A comprehensive foundation repository compiling ML pipelines, exploratory data analysis templates, and model validation code.",
       technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Matplotlib"],
-      myRole: "Implemented standard engineering tasks: data cleaning, cross-validation scoring, and feature correlation studies.",
+      myRole: "This repository serves as a personal reference for future ML projects and is not tied to a specific product or outcome. It is a work in progress that I continuously update as I learn new techniques and best practices in machine learning.",
       status: "Ongoing",
       gradient: "from-primary to-secondary",
       githubUrl: "https://github.com/minuraashen/Machine-Learning",
@@ -173,7 +173,7 @@ const Projects = () => {
               Featured <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              A curated showcase of engineering builds spanning AI/ML applications, low-code systems, and analog circuitry.
+              A showcase of engineering work spanning AI/ML applications, low-code systems, and analog circuitry.
             </p>
           </motion.div>
         </div>

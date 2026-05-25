@@ -1,7 +1,7 @@
 import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profilePicture from "@/assets/profile-picture.jpg";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -49,6 +49,8 @@ const Hero = () => {
     }
   };
 
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-background">
       {/* Decorative background shapes */}
@@ -71,20 +73,18 @@ const Hero = () => {
       <div className="container mx-auto relative z-10 max-w-7xl">
         <motion.div 
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+            variants={containerVariants}
+            initial={shouldReduceMotion ? "visible" : "hidden"}
+            animate="visible"
         >
           {/* Text Content */}
           <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             <div className="space-y-3 sm:space-y-4 text-center lg:text-left">
-              <motion.div variants={itemVariants} className="inline-block px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs sm:text-sm font-medium tracking-wide">
-                Welcome to my engineering space
-              </motion.div>
               <motion.h1 
                 variants={itemVariants} 
                 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-semibold leading-tight text-foreground"
-              >
+              > 
+                <span className="block text-2xl sm:text-3xl text-primary">Hello, I'm</span>
                 <span className="block">Minura Ashen</span>
                 <span className="block bg-gradient-primary bg-clip-text text-transparent">Samaramanna</span>
               </motion.h1>
@@ -117,6 +117,7 @@ const Hero = () => {
                 size="lg"
                 className="text-sm sm:text-base px-6 sm:px-8 py-3 rounded-full bg-gradient-primary text-primary-foreground hover:opacity-95 transition-all duration-300 shadow-lg shadow-primary/25 border-none"
                 onClick={scrollToAbout}
+                aria-label="Explore my work"
               >
                 Explore My Work
                 <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
@@ -128,7 +129,7 @@ const Hero = () => {
                 className="text-sm sm:text-base px-6 sm:px-8 py-3 rounded-full hover:bg-muted transition-all duration-300 border border-border" 
                 asChild
               >
-                <a href="/cv.pdf" download="Minura_Ashen_CV.pdf">
+                <a href="/cv.pdf" download="Minura_Ashen_CV.pdf" aria-label="Download CV">
                   Download CV
                   <Download className="ml-2 h-4 w-4" />
                 </a>
@@ -136,13 +137,13 @@ const Hero = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex gap-4 justify-center lg:justify-start mt-2">
-              <a href="mailto:samaramannama.22@uom.lk" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="Email">
+              <a href="mailto:samaramannama.22@uom.lk" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="Email" aria-label="Email">
                 <Mail className="h-5 w-5" />
               </a>
-              <a href="https://linkedin.com/in/minura-ashen" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="LinkedIn">
+              <a href="https://linkedin.com/in/minura-ashen" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="LinkedIn" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://github.com/minuraashen" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="GitHub">
+              <a href="https://github.com/minuraashen" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="GitHub" aria-label="GitHub">
                 <Github className="h-5 w-5" />
               </a>
             </motion.div>
@@ -153,15 +154,16 @@ const Hero = () => {
             <motion.div 
               className="relative"
               variants={profileVariants}
-              initial="hidden"
+              initial={shouldReduceMotion ? "visible" : "hidden"}
               animate="visible"
             >
               <div className="absolute -inset-2 bg-gradient-primary rounded-full blur-2xl opacity-40 animate-pulse"></div>
               <div className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] bg-card rounded-full shadow-2xl border-4 border-border/40 overflow-hidden flex items-center justify-center">
-                <img 
-                  src={profilePicture} 
-                  alt="Minura Ashen Samaramanna" 
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" 
+                <img
+                  src={profilePicture}
+                  alt="Minura Ashen Samaramanna"
+                  loading="lazy"
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </motion.div>

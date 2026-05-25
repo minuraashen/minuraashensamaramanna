@@ -8,7 +8,7 @@ const Skills = () => {
     {
       icon: <Code className="h-5 w-5 sm:h-6 sm:w-6" />,
       title: "Programming Languages",
-      skills: ["Python", "JavaScript", "C/C++", "MATLAB", "Assembly (STM32)"],
+      skills: ["Python", "JavaScript/TypeScript", "C/C++", "MATLAB", "Assembly (STM32)"],
       color: "from-primary to-accent"
     },
     {
@@ -78,9 +78,6 @@ const Skills = () => {
             <h2 className="text-4xl lg:text-5xl font-heading font-semibold mb-4 text-foreground">
               Skills & <span className="bg-gradient-primary bg-clip-text text-transparent">Expertise</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              A comprehensive toolkit spanning hardware design, software engineering, and emerging AI technologies.
-            </p>
           </motion.div>
         </div>
 
