@@ -7,7 +7,6 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import TechnicalWriting from "@/components/TechnicalWriting";
 import ExtraCurricular from "@/components/ExtraCurricular";
-import TravelLog from "@/components/TravelLog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -54,7 +53,7 @@ const Index = () => {
       <Projects />
       <TechnicalWriting />
       <ExtraCurricular />
-      <TravelLog />
+      {/* TravelLog section temporarily disabled for future improvement */}
       <Contact />
       <Footer />
     </div>
