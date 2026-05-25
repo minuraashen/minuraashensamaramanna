@@ -29,16 +29,16 @@ export default {
 				   background: 'hsl(var(--background))',
 				   foreground: 'hsl(var(--foreground))',
 				   primary: {
-					   DEFAULT: '#2ec4b6', // Greenish-blue accent for light mode
-					   foreground: '#ffffff',
+					   DEFAULT: 'hsl(var(--primary))',
+					   foreground: 'hsl(var(--primary-foreground))',
 				   },
 				   secondary: {
-					   DEFAULT: '#e0fbfc', // Soft light secondary
-					   foreground: '#22223b',
+					   DEFAULT: 'hsl(var(--secondary))',
+					   foreground: 'hsl(var(--secondary-foreground))',
 				   },
 				   accent: {
-					   DEFAULT: '#3aafa9', // Slightly deeper teal for accents
-					   foreground: '#ffffff',
+					   DEFAULT: 'hsl(var(--accent))',
+					   foreground: 'hsl(var(--accent-foreground))',
 				   },
 				   // muted color defined below with CSS variable
 				   destructive: {
