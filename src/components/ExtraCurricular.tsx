@@ -3,6 +3,11 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
+import tplImg from "@/assets/tpl.jpeg";
+import internEventImg from "@/assets/internevents.jpeg";
+import silliconPulseImg from "@/assets/siliconpulse.jpeg";
+import batchtripImg from "@/assets/batchtrip.jpeg";
+
 const ExtraCurricular = () => {
   const activities = [
     {
@@ -11,6 +16,7 @@ const ExtraCurricular = () => {
       description: "Represented the team who are the 1st runner up in the TPL cricket tournament organized by the ENTC department.",
       date: "Annual Event",
       location: "University Grounds",
+      image: tplImg,
       icon: <Flame className="h-6 w-6" />,
       gradient: "from-orange-500 to-rose-500"
     },
@@ -20,6 +26,7 @@ const ExtraCurricular = () => {
       description: "Secured 2nd place in the Sillicon Pulse Analog Electronics Competition, showcasing strong circuit design and problem-solving skills.",
       date: "2024",
       location: "SLTC University",
+      image: silliconPulseImg,
       icon: <Flame className="h-6 w-6" />,
       gradient: "from-orange-500 to-rose-500"
     },
@@ -29,6 +36,7 @@ const ExtraCurricular = () => {
       description: "Futsal tournament and News paper fashion show organized by WSO2 for their interns. That was filled with fun and bonding with fellow interns.",
       date: "April 2026",
       location: "WSO2 Premises",
+      image: internEventImg,
       icon: <Users className="h-6 w-6" />,
       gradient: "from-blue-500 to-indigo-500"
     },
@@ -38,6 +46,7 @@ const ExtraCurricular = () => {
       description: "ENTC 1st year batch trip to Riverston, a great experience filled with fun, bonding, and unforgettable memories.",
       date: "2024",
       location: "Riverston",
+      image: batchtripImg,
       icon: <Users className="h-6 w-6" />,
       gradient: "from-blue-500 to-indigo-500"
     }
@@ -75,11 +84,19 @@ const ExtraCurricular = () => {
               <Card className="glass-card border border-border/30 hover:border-primary/25 hover:shadow-glow transition-all duration-500 group flex flex-col justify-between overflow-hidden rounded-3xl w-full">
                 
                 {/* Visual Header */}
-                <div className={`relative h-40 w-full bg-gradient-to-br ${activity.gradient} opacity-80 flex-shrink-0 flex items-center justify-center`}>
+                <div className={`relative h-40 w-full bg-gradient-to-br ${activity.gradient} opacity-80 flex-shrink-0 flex items-center justify-center overflow-hidden`}>
                   <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-                  <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg">
-                    {activity.icon}
-                  </div>
+                  {activity.image ? (
+                    <img
+                      src={activity.image}
+                      alt={activity.title}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg">
+                      {activity.icon}
+                    </div>
+                  )}
                   <div className="absolute top-3 left-3">
                     <Badge className="bg-black/40 backdrop-blur-md border-none text-white text-[10px] uppercase font-bold tracking-wider rounded-full px-2.5 py-1">
                       {activity.category}
