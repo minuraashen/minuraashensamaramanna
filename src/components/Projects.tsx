@@ -20,6 +20,7 @@ import fullstackImg from "@/assets/fullstackproject.png";
 import fiveBandImg from "@/assets/fivebandeq.png";
 import mlRepoImg from "@/assets/mechinelearning.png";
 import amrImg from "@/assets/amr.jpg";
+import kaprukagentImg from "@/assets/kaprukaagent.png";
 
 const Projects = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -70,6 +71,21 @@ const Projects = () => {
     },
     {
       id: 3,
+      icon: <Brain className="h-6 w-6" />,
+      title: "Kapruka AI Shopping Assistant",
+      description: "AI-powered conversational shopping assistant for Kapruka, Sri Lanka's largest e-commerce platform, using Kapruka's public MCP. Lets users discover products, find gifts, check delivery, and complete a full guest checkout — all through natural chat in English or Sinhala, powered by an LLM function-calling loop over Kapruka's MCP tools.",
+      technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Kapruka MCP", "OpenRouter", "Groq"],
+      myRole: "Designed and built the entire system end-to-end from the LLM function-calling loop and MCP tool integration to the bilingual chat UI and guest checkout flow. Architected the agent pipeline, selected and integrated OpenRouter/Groq as the LLM backend, and deployed the production app on Hugging Face Spaces.",
+      status: "Completed",
+      gradient: "from-violet-500 to-purple-600",
+      githubUrl: "https://github.com/minuraashen/Kapruka-Agent",
+      detailsUrl: "https://minuraashen-kapruka-agent.hf.space/",
+      tags: ["ai-ml", "software"],
+      image: kaprukagentImg,
+      featured: false
+    },
+    {
+      id: 4,
       icon: <Image className="h-6 w-6" />,
       title: "Full-Stack E-Commerce Application",
       description: "A responsive commerce platform using MongoDB, Express.js, React, and Node.js. Incorporates Chakra UI blocks, JWT auth flows, and checkout endpoints.",
@@ -83,7 +99,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 4,
+      id: 5,
       icon: <Brain className="h-6 w-6" />,
       title: "Supervised Machine Learning Repository",
       description: "A comprehensive foundation repository compiling ML pipelines, exploratory data analysis templates, and model validation code.",
@@ -97,7 +113,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 5,
+      id: 6,
       icon: <Volume2 className="h-6 w-6" />,
       title: "Five-Band Audio Equalizer",
       description: "A complete hardware implementation of an analog five-band audio equalizer. Designed active filters, simulated band responses, and troubleshot circuit gains.",
@@ -112,7 +128,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 6,
+      id: 7,
       icon: <Navigation className="h-6 w-6" />,
       title: "Autonomous Mobile Robot (AMR)",
       description: "A modular navigation robot implementing LiDAR slam obstacles detection, closed-loop telemetry, and dynamic motor controls.",
@@ -126,7 +142,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 7,
+      id: 8,
       icon: <Mic className="h-6 w-6" />,
       title: "Microphone Preamp with Class AB Amplifier",
       description: "High-fidelity, low-noise audio amplifier featuring thermal compensation circuits and optimized biasing for clear sound delivery.",
