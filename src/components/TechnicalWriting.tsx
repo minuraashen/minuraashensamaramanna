@@ -6,6 +6,7 @@ import semanticBlog1Img from "@/assets/semanticblog1.png";
 import semanticBlog2Img from "@/assets/semanticblog2.png";
 import vscodeBlogImg from "@/assets/vscodeblog.png";
 import vlmBlogImg from "@/assets/vlmblog.png";
+import mentalModelImg from "@/assets/mentalmodel.svg";
 import {
   Carousel,
   CarouselContent,
@@ -16,6 +17,15 @@ import {
 
 const TechnicalWriting = () => {
   const articles = [
+    {
+      title: "A Complete Mental Model for Generative AI — Part 1",
+      description: "A simple, practical 5-layer mental model (Representation, Architecture, Generation Paradigm, Training Objective, Conditioning). Part 1 explains Representation and Architecture in an approachable way.",
+      link: "https://medium.com/@minuraashensamaramanna/a-complete-mental-model-for-generative-ai-part-1-f85b0da2579d",
+      date: "June 2026",
+      readTime: "15 min read",
+      gradient: "from-primary to-accent",
+      image: mentalModelImg
+    },
     {
       title: "Designing Semantic Code Search Tool for WSO2 MI Copilot—Part 1",
       description: "An in-depth look at implementing structure-aware chunking for XML configurations and the core semantic search vector design for AI assistants.",
