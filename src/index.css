@@ -2,155 +2,477 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================================
+   DESIGN SYSTEM — SPATIAL & LAYERED STORYTELLING PORTFOLIO
+   All colors MUST be HSL. 3D transforms, aurora, neon glows.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @layer base {
   :root {
-    /* Light theme - COZYDIADORA-inspired palette */
-    --background: 180 60% 98%; /* very light teal/cream */
-    --foreground: 210 15% 18%; /* deep blue text */
+    /* ── Light Theme: Soft Aurora Mesh ── */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
-    --card: 180 60% 100%;
-    --card-foreground: 210 15% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 180 60% 100%;
-    --popover-foreground: 210 15% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 177 63% 48%; /* teal/greenish-blue */
+    --primary: 177 63% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 192 20% 90%; /* soft blue-gray */
-    --secondary-foreground: 210 15% 18%;
+    --secondary: 192 20% 88%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 180 20% 94%;
-    --muted-foreground: 210 7% 40%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 177 63% 60%; /* lighter teal accent */
+    --accent: 177 63% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 180 15% 88%;
-    --input: 180 15% 96%;
-    --ring: 177 63% 48%;
+    --border: 214 32% 91%;
+    --input: 214 32% 96%;
+    --ring: 177 63% 42%;
 
-    /* Custom portfolio gradients and shadows */
-    --gradient-primary: linear-gradient(135deg, hsl(177 63% 48%), hsl(177 63% 60%));
-    --gradient-card: linear-gradient(135deg, hsl(180 60% 100%), hsl(180 60% 98%));
-    --shadow-glow: 0 0 40px hsl(177 63% 48% / 0.12);
-    --shadow-card: 0 10px 30px -10px hsl(210 10% 10% / 0.08);
-    
+    /* ── Light Mode Special Tokens ── */
+    --gradient-primary: linear-gradient(135deg, hsl(177 63% 42%), hsl(177 63% 58%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    --shadow-glow: 0 0 40px hsl(177 63% 42% / 0.20);
+    --shadow-card: 0 10px 40px -12px hsl(222 47% 11% / 0.10);
+    --shadow-3d: 0 30px 60px -15px hsl(177 63% 42% / 0.15), 0 10px 20px -8px hsl(222 47% 11% / 0.08);
+
+    /* Aurora gradient blobs — light mode */
+    --blob-1: hsl(177 63% 65% / 0.35);
+    --blob-2: hsl(210 80% 75% / 0.30);
+    --blob-3: hsl(270 60% 80% / 0.25);
+
+    /* Neon accent — light uses soft teal */
+    --neon-primary: hsl(177 63% 42%);
+    --neon-glow: 0 0 20px hsl(177 63% 42% / 0.4), 0 0 60px hsl(177 63% 42% / 0.15);
+
+    /* Background texture overlay */
+    --noise-opacity: 0.025;
+    --mesh-gradient: radial-gradient(ellipse at 20% 50%, hsl(177 63% 65% / 0.18) 0%, transparent 50%),
+                     radial-gradient(ellipse at 80% 20%, hsl(210 80% 75% / 0.15) 0%, transparent 50%),
+                     radial-gradient(ellipse at 60% 80%, hsl(270 60% 80% / 0.12) 0%, transparent 50%);
+
     --radius: 0.75rem;
 
-    --sidebar-background: 180 60% 98%;
-    --sidebar-foreground: 210 15% 18%;
-    --sidebar-primary: 177 63% 48%;
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 177 63% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 177 63% 60%;
+    --sidebar-accent: 177 63% 55%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 180 15% 88%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 177 63% 42%;
   }
 
   .dark {
-    /* Dark mode palette matching cozy theme */
-    --background: 230 16% 8%; /* deep navy/charcoal */
+    /* ── Dark Theme: Deep Space with Neon Teal ── */
+    --background: 224 20% 6%;
     --foreground: 210 20% 96%;
 
-    --card: 230 16% 10%;
+    --card: 224 18% 9%;
     --card-foreground: 210 20% 96%;
 
-    --popover: 230 16% 10%;
+    --popover: 224 18% 9%;
     --popover-foreground: 210 20% 96%;
 
-     /* Preserve the original accent colors (expressed in HSL) so Tailwind
-       utilities match the previous hard-coded hex values but remain driven
-       by CSS variables. */
-     --primary: 177 63% 48%; /* matches #2ec4b6 */
-     --primary-foreground: 230 16% 10%;
+    --primary: 177 63% 48%;
+    --primary-foreground: 224 20% 6%;
 
-     --secondary: 192 20% 90%; /* matches #e0fbfc */
-     --secondary-foreground: 210 20% 96%;
+    --secondary: 224 15% 16%;
+    --secondary-foreground: 210 20% 96%;
 
-     --muted: 230 12% 18%;
-     --muted-foreground: 210 40% 80%;
+    --muted: 224 14% 14%;
+    --muted-foreground: 215 20% 65%;
 
-     --accent: 177 63% 60%; /* matches #3aafa9 */
-     --accent-foreground: 210 20% 96%;
+    --accent: 177 63% 60%;
+    --accent-foreground: 224 20% 6%;
 
     --destructive: 0 62% 46%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 230 12% 14%;
-    --input: 230 12% 14%;
-    --ring: 14 100% 64%;
+    --border: 224 14% 14%;
+    --input: 224 14% 12%;
+    --ring: 177 63% 48%;
 
-    --sidebar-background: 230 14% 6%;
+    /* ── Dark Mode Special Tokens ── */
+    --gradient-primary: linear-gradient(135deg, hsl(177 63% 48%), hsl(177 63% 62%));
+    --gradient-card: linear-gradient(135deg, hsl(224 18% 9%), hsl(224 18% 12%));
+    --shadow-glow: 0 0 40px hsl(177 63% 48% / 0.30);
+    --shadow-card: 0 10px 40px -12px hsl(0 0% 0% / 0.40);
+    --shadow-3d: 0 30px 60px -15px hsl(177 63% 48% / 0.25), 0 10px 20px -8px hsl(0 0% 0% / 0.40);
+
+    /* Neon glow tokens — dark mode is dramatic */
+    --neon-primary: hsl(177 63% 55%);
+    --neon-glow: 0 0 20px hsl(177 63% 55% / 0.6), 0 0 60px hsl(177 63% 55% / 0.25), 0 0 100px hsl(177 63% 55% / 0.10);
+
+    /* Aurora gradient blobs — dark deep space */
+    --blob-1: hsl(177 63% 48% / 0.18);
+    --blob-2: hsl(265 60% 50% / 0.14);
+    --blob-3: hsl(210 80% 50% / 0.12);
+
+    /* Starfield dot pattern */
+    --noise-opacity: 0.04;
+    --mesh-gradient: radial-gradient(ellipse at 15% 40%, hsl(177 63% 48% / 0.12) 0%, transparent 55%),
+                     radial-gradient(ellipse at 85% 15%, hsl(265 60% 50% / 0.10) 0%, transparent 55%),
+                     radial-gradient(ellipse at 55% 85%, hsl(210 80% 50% / 0.08) 0%, transparent 55%);
+
+    --sidebar-background: 224 20% 5%;
     --sidebar-foreground: 210 20% 96%;
-    --sidebar-primary: 14 100% 64%;
-    --sidebar-primary-foreground: 230 14% 8%;
-    --sidebar-accent: 275 18% 46%;
-    --sidebar-accent-foreground: 230 14% 8%;
-    --sidebar-border: 230 12% 14%;
-    --sidebar-ring: 14 100% 64%;
+    --sidebar-primary: 177 63% 48%;
+    --sidebar-primary-foreground: 224 20% 6%;
+    --sidebar-accent: 265 40% 50%;
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 224 14% 14%;
+    --sidebar-ring: 177 63% 48%;
   }
+}
+
+/* ============================================================
+   BACKGROUND SYSTEM
+   ============================================================ */
+
+/* Animated aurora mesh background */
+.bg-aurora {
+  background-color: hsl(var(--background));
+  background-image: var(--mesh-gradient);
+}
+
+/* Dot-grid starfield for dark mode */
+.bg-starfield {
+  background-image:
+    radial-gradient(circle, hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Subtle noise grain overlay */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: var(--noise-opacity);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
 }
 
 /* Grid Pattern */
 .bg-grid-pattern {
-  background-image: 
-    linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image:
+    linear-gradient(hsl(var(--primary) / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--primary) / 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
 
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    background-image: var(--mesh-gradient);
   }
 }
 
+/* ============================================================
+   GLASS MORPHISM UTILITIES
+   ============================================================ */
+
 @layer utilities {
+
+  /* ── Glassmorphism Cards ── */
   .glass-card {
-    background-color: hsl(var(--card) / 0.5);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid hsl(var(--border) / 0.4);
+    background-color: hsl(var(--card) / 0.55);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(var(--border) / 0.45);
   }
 
   .glass-card-hover {
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .glass-card-hover:hover {
-    background-color: hsl(var(--card) / 0.7);
-    border-color: hsl(var(--primary) / 0.3);
-    box-shadow: 0 20px 40px -15px hsl(var(--primary) / 0.12);
-    transform: translateY(-4px);
+    background-color: hsl(var(--card) / 0.75);
+    border-color: hsl(var(--primary) / 0.35);
+    box-shadow: var(--shadow-3d);
+    transform: translateY(-6px);
   }
 
-  /* Custom Premium Scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  /* Dock glassmorphism */
+  .glass-dock {
+    background-color: hsl(var(--card) / 0.65);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid hsl(var(--border) / 0.50);
+    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.18), 0 2px 8px hsl(0 0% 0% / 0.10), inset 0 1px 0 hsl(255 100% 100% / 0.08);
   }
+
+  /* ── 3D Card Tilt Container ── */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* ── Neon Glow ── */
+  .neon-glow {
+    box-shadow: var(--neon-glow);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.4);
+  }
+
+  /* ── Gradient Text ── */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Shimmer text animation */
+  .shimmer-text {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 30%,
+      hsl(177 80% 75%) 50%,
+      hsl(var(--accent)) 70%,
+      hsl(var(--primary)) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* ── Terminal Utilities ── */
+  .font-mono-terminal {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+
+  /* ── Blob Background ── */
+  .blob-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    animation: blob-drift 12s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .blob-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--blob-1);
+    top: -15%;
+    left: -10%;
+    animation-delay: 0s;
+    animation-duration: 14s;
+  }
+
+  .blob-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--blob-2);
+    top: 40%;
+    right: -8%;
+    animation-delay: -4s;
+    animation-duration: 18s;
+  }
+
+  .blob-3 {
+    width: 400px;
+    height: 400px;
+    background: var(--blob-3);
+    bottom: -10%;
+    left: 30%;
+    animation-delay: -8s;
+    animation-duration: 16s;
+  }
+
+  /* ── Section Depth Layers ── */
+  .section-elevated {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Status Badge Colors ── */
+  .status-completed {
+    color: hsl(142 76% 52%);
+    background-color: hsl(142 76% 52% / 0.10);
+    border-color: hsl(142 76% 52% / 0.25);
+  }
+
+  .status-ongoing {
+    color: hsl(38 92% 55%);
+    background-color: hsl(38 92% 55% / 0.10);
+    border-color: hsl(38 92% 55% / 0.25);
+  }
+
+  .status-intern {
+    color: hsl(214 89% 60%);
+    background-color: hsl(214 89% 60% / 0.10);
+    border-color: hsl(214 89% 60% / 0.25);
+  }
+
+  /* ── Custom Premium Scrollbar ── */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
   ::-webkit-scrollbar-track {
     background: hsl(var(--background));
   }
+
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground) / 0.25);
+    background: hsl(var(--muted-foreground) / 0.20);
     border-radius: 99px;
     border: 2px solid hsl(var(--background));
   }
+
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.70);
   }
+
+  /* ── Selection Color ── */
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: hsl(var(--foreground));
+  }
+}
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+
+/* Organic blob movement */
+@keyframes blob-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(40px, -30px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 40px) scale(0.97);
+  }
+  75% {
+    transform: translate(30px, 20px) scale(1.03);
+  }
+}
+
+/* Text shimmer sweep */
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Terminal cursor blink */
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Floating vertical bob */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Card entrance with 3D flip */
+@keyframes card-rise-3d {
+  0% {
+    opacity: 0;
+    transform: perspective(800px) rotateX(20deg) translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0deg) translateY(0);
+  }
+}
+
+/* Neon pulse ring */
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 10px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.15); }
+  50%       { box-shadow: 0 0 25px hsl(var(--primary) / 0.7), 0 0 60px hsl(var(--primary) / 0.30); }
+}
+
+/* Scale in pop */
+@keyframes scale-in {
+  0%   { transform: scale(0.92) translateY(16px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Fade in up */
+@keyframes fade-in {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Accordion */
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+
+/* Rotate orbit */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Draw border */
+@keyframes draw-border {
+  from { stroke-dashoffset: 400; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Stack card entrance */
+@keyframes stack-in {
+  0%   { opacity: 0; transform: perspective(1000px) rotateX(25deg) translateY(60px) scale(0.95); }
+  100% { opacity: 1; transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1); }
 }

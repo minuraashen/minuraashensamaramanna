@@ -1,121 +1,215 @@
+import { useRef } from "react";
 import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profilePicture from "@/assets/profile-picture.jpg";
-import { motion, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
+
+/* ── Kinetic letter stagger ── */
+const KineticText = ({
+  text,
+  className,
+  delay = 0,
+  highlightClass,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  highlightClass?: string;
+}) => {
+  const letters = Array.from(text);
+  return (
+    <span className={className} aria-label={text}>
+      {letters.map((char, i) => (
+        <motion.span
+          key={i}
+          style={{ display: char === " " ? "inline" : "inline-block" }}
+          initial={{ y: 60, opacity: 0, rotateX: -60 }}
+          animate={{ y: 0,  opacity: 1, rotateX: 0   }}
+          transition={{
+            type: "spring",
+            stiffness: 120,
+            damping: 14,
+            delay: delay + i * 0.035,
+          }}
+          className={highlightClass}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
+/* ── 3D Tilt profile frame ── */
+const TiltFrame = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const sRotateX = useSpring(rotateX, { stiffness: 200, damping: 22 });
+  const sRotateY = useSpring(rotateY, { stiffness: 200, damping: 22 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width  / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    rotateY.set(dx * 14);
+    rotateX.set(-dy * 14);
+  };
+
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX: sRotateX, rotateY: sRotateY, perspective: 1000 }}
+      className="cursor-pointer"
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const textY   = useTransform(scrollYProgress, [0, 1], ["0%",  "-18%"]);
+  const imageY  = useTransform(scrollYProgress, [0, 1], ["0%",  "-10%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   const scrollToAbout = () => {
-    const element = document.querySelector("#about");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
-    }
+    hidden:  {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden:  { y: 30, opacity: 0 },
     visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 14
-      }
-    }
+      y: 0, opacity: 1,
+      transition: { type: "spring", stiffness: 80, damping: 14 },
+    },
   };
-
-  const profileVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 60,
-        damping: 15,
-        delay: 0.3
-      }
-    }
-  };
-
-  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-background">
-      {/* Decorative background shapes */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <svg className="absolute -top-24 -left-24 w-96 h-96 opacity-30 dark:opacity-20" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1">
-              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity="0.05" />
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="600" height="600" rx="120" fill="url(#g1)" />
-        </svg>
-
-        <svg className="absolute -bottom-32 right-8 w-80 h-80 opacity-20 dark:opacity-10" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-          <circle cx="200" cy="200" r="180" fill="hsl(var(--accent) / 0.12)" />
-        </svg>
+    <section
+      id="home"
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+      style={{ paddingBottom: "5rem" }} /* room for dock */
+    >
+      {/* ── Animated Gradient Blobs ── */}
+      <div className="blob-container" aria-hidden>
+        <div className="blob blob-1" />
+        <div className="blob blob-2" />
+        <div className="blob blob-3" />
       </div>
 
-      <div className="container mx-auto relative z-10 max-w-7xl">
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center"
-            variants={containerVariants}
-            initial={shouldReduceMotion ? "visible" : "hidden"}
-            animate="visible"
-        >
-          {/* Text Content */}
-          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
-            <div className="space-y-3 sm:space-y-4 text-center lg:text-left">
-              <motion.h1 
-                variants={itemVariants} 
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-semibold leading-tight text-foreground"
-              > 
-                <span className="block text-2xl sm:text-3xl text-primary">Hello, I'm</span>
-                <span className="block">Minura Ashen</span>
-                <span className="block bg-gradient-primary bg-clip-text text-transparent">Samaramanna</span>
-              </motion.h1>
-              <motion.p 
-                variants={itemVariants} 
-                className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 px-2 lg:px-0"
-              >
-                B.Sc.(Hons) Electronic and Telecommunication Engineering — University of Moratuwa
-              </motion.p>
-            </div>
+      {/* ── Dot-grid texture (dark mode) ── */}
+      <div className="absolute inset-0 bg-starfield opacity-0 dark:opacity-100 pointer-events-none" aria-hidden />
 
+      {/* ── Scroll-based parallax wrapper ── */}
+      <motion.div
+        style={{ opacity }}
+        className="relative z-10 w-full container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+      >
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 items-center"
+          variants={containerVariants}
+          initial={shouldReduceMotion ? "visible" : "hidden"}
+          animate="visible"
+        >
+          {/* ── Text Column ── */}
+          <motion.div style={{ y: textY }} className="space-y-7 order-2 lg:order-1">
+            {/* Greeting typewriter */}
+            <motion.div variants={itemVariants} className="text-center lg:text-left">
+              <motion.p
+                className="text-base sm:text-lg text-primary font-mono-terminal font-medium tracking-widest uppercase mb-3"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0  }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <span className="inline-block mr-2 text-primary animate-terminal-blink">▸</span>
+                Hello, I'm
+              </motion.p>
+
+              {/* Name — kinetic letter-by-letter */}
+              <h1 className="font-heading font-bold leading-tight text-foreground" style={{ perspective: "600px" }}>
+                <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl">
+                  <KineticText text="Minura Ashen" delay={0.25} />
+                </span>
+                <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mt-1">
+                  <KineticText
+                    text="Samaramanna"
+                    delay={0.55}
+                    highlightClass="shimmer-text"
+                  />
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Subtitle */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed text-center lg:text-left"
+            >
+              B.Sc.(Hons) Electronic and Telecommunication Engineering — University of Moratuwa
+            </motion.p>
+
+            {/* Areas of Interest card */}
             <motion.div variants={itemVariants} className="max-w-lg mx-auto lg:mx-0">
-              <div className="glass-card rounded-3xl p-5 border border-border/30 hover:border-primary/20 transition-all duration-300">
-                <div className="flex items-center gap-3">
-                  <div>
-                    <div className="text-sm font-semibold tracking-wide text-foreground uppercase">Areas of Interest</div>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/10">Computer Vision</span>
-                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/10">Machine Learning</span>
-                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/10">Software Development</span>
-                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/10">Embedded Systems</span>
-                    </div>
-                  </div>
+              <div
+                className="glass-card rounded-2xl p-5 border border-border/30 hover:border-primary/30 transition-all duration-400 hover:shadow-glow"
+                style={{ perspective: "800px" }}
+              >
+                <div className="text-xs font-bold tracking-widest text-primary uppercase mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-neon-pulse inline-block" />
+                  Areas of Interest
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {["Computer Vision", "Machine Learning", "Software Development", "Embedded Systems"].map((tag, i) => (
+                    <motion.span
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1   }}
+                      transition={{ delay: 0.9 + i * 0.08, type: "spring", stiffness: 200 }}
+                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/15 hover:bg-primary/20 transition-colors cursor-default"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
                 </div>
               </div>
             </motion.div>
 
+            {/* CTA Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-4">
               <Button
                 size="lg"
-                className="text-sm sm:text-base px-6 sm:px-8 py-3 rounded-full bg-gradient-primary text-primary-foreground hover:opacity-95 transition-all duration-300 shadow-lg shadow-primary/25 border-none"
+                className="text-sm sm:text-base px-7 py-3 rounded-full bg-gradient-primary text-primary-foreground hover:opacity-95 transition-all duration-300 shadow-lg shadow-primary/25 border-none hover:shadow-glow hover:scale-105"
                 onClick={scrollToAbout}
                 aria-label="Explore my work"
               >
@@ -123,10 +217,10 @@ const Hero = () => {
                 <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
               </Button>
 
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="text-sm sm:text-base px-6 sm:px-8 py-3 rounded-full hover:bg-muted transition-all duration-300 border border-border" 
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-sm sm:text-base px-7 py-3 rounded-full hover:bg-muted/60 transition-all duration-300 border border-border/60 hover:border-primary/40 hover:scale-105"
                 asChild
               >
                 <a href="/cv.pdf" download="Minura_Ashen_CV.pdf" aria-label="Download CV">
@@ -136,40 +230,110 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex gap-4 justify-center lg:justify-start mt-2">
-              <a href="mailto:samaramannama.22@uom.lk" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="Email" aria-label="Email">
-                <Mail className="h-5 w-5" />
-              </a>
-              <a href="https://linkedin.com/in/minura-ashen" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="LinkedIn" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="https://github.com/minuraashen" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-muted hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300" title="GitHub" aria-label="GitHub">
-                <Github className="h-5 w-5" />
-              </a>
+            {/* Social Links */}
+            <motion.div variants={itemVariants} className="flex gap-3 justify-center lg:justify-start">
+              {[
+                { href: "mailto:samaramannama.22@uom.lk", icon: Mail,     label: "Email"    },
+                { href: "https://linkedin.com/in/minura-ashen",           icon: Linkedin, label: "LinkedIn", external: true },
+                { href: "https://github.com/minuraashen",                 icon: Github,   label: "GitHub",   external: true },
+              ].map(({ href, icon: Icon, label, external }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  whileHover={{ y: -4, scale: 1.12 }}
+                  whileTap={{ scale: 0.92 }}
+                  className="p-3 rounded-xl glass-card hover:border-primary/40 hover:text-primary hover:shadow-glow transition-all duration-300"
+                  title={label}
+                  aria-label={label}
+                >
+                  <Icon className="h-5 w-5" />
+                </motion.a>
+              ))}
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* Profile Picture Frame */}
-          <div className="flex justify-center order-1 lg:order-2">
-            <motion.div 
-              className="relative"
-              variants={profileVariants}
-              initial={shouldReduceMotion ? "visible" : "hidden"}
-              animate="visible"
-            >
-              <div className="absolute -inset-2 bg-gradient-primary rounded-full blur-2xl opacity-40 animate-pulse"></div>
-              <div className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] bg-card rounded-full shadow-2xl border-4 border-border/40 overflow-hidden flex items-center justify-center">
-                <img
-                  src={profilePicture}
-                  alt="Minura Ashen Samaramanna"
-                  loading="lazy"
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </motion.div>
-          </div>
+          {/* ── Profile Picture Column ── */}
+          <motion.div
+            style={{ y: imageY }}
+            className="flex justify-center order-1 lg:order-2"
+          >
+            <TiltFrame>
+              <motion.div
+                className="relative"
+                initial={shouldReduceMotion ? {} : { scale: 0.8, opacity: 0, rotateY: -20 }}
+                animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+                transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.4 }}
+              >
+                {/* Outer neon ring */}
+                <div className="absolute -inset-4 rounded-full bg-gradient-primary opacity-30 blur-3xl animate-neon-pulse" />
+
+                {/* Orbit ring decoration */}
+                <motion.div
+                  className="absolute -inset-3 rounded-full border border-primary/20"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                >
+                  <span className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary/70 shadow-glow" />
+                </motion.div>
+
+                {/* Profile image frame */}
+                <div
+                  className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden border-2 border-border/30 shadow-3d"
+                  style={{ boxShadow: "0 30px 80px -20px hsl(177 63% 48% / 0.3), 0 0 0 1px hsl(var(--border) / 0.2)" }}
+                >
+                  <img
+                    src={profilePicture}
+                    alt="Minura Ashen Samaramanna"
+                    loading="eager"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                  />
+
+                  {/* Glass overlay shimmer on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                </div>
+
+                {/* Floating stat chips */}
+                <motion.div
+                  className="absolute -bottom-3 -left-8 glass-card rounded-xl px-4 py-2.5 border border-border/30 shadow-card hidden sm:block"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0  }}
+                  transition={{ delay: 1.2, type: "spring" }}
+                >
+                  <div className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent font-heading">3.93</div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">CGPA / 4.0</div>
+                </motion.div>
+
+                <motion.div
+                  className="absolute -top-3 -right-8 glass-card rounded-xl px-4 py-2.5 border border-border/30 shadow-card hidden sm:block"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0  }}
+                  transition={{ delay: 1.4, type: "spring" }}
+                >
+                  <div className="text-xl font-bold text-foreground font-heading">#1</div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">District Rank</div>
+                </motion.div>
+              </motion.div>
+            </TiltFrame>
+          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
+
+      {/* ── Scroll indicator ── */}
+      <motion.div
+        className="absolute bottom-28 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/60"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.2, duration: 0.8 }}
+      >
+        <span className="text-[10px] uppercase tracking-widest font-medium">Scroll</span>
+        <motion.div
+          className="w-px h-10 bg-gradient-to-b from-primary/60 to-transparent"
+          animate={{ scaleY: [1, 0.4, 1], opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 1.8, repeat: Infinity }}
+        />
+      </motion.div>
     </section>
   );
 };
