@@ -15,11 +15,8 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm text-muted-foreground font-mono-terminal">
-            Engineering practical solutions with creative and mathematical precision
-          </p>
           <p className="text-sm text-muted-foreground flex items-center justify-center gap-1.5">
-            © 2024 Minura Ashen Samaramanna. All rights reserved.
+            © 2026 Minura Ashen Samaramanna. All rights reserved.
           </p>
         </motion.div>
       </div>

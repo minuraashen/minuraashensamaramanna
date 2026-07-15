@@ -8,7 +8,8 @@ const navItems = [
   { id: "about",      label: "About",    icon: User,       href: "#about" },
   { id: "skills",     label: "Skills",   icon: Zap,        href: "#skills" },
   { id: "projects",   label: "Projects", icon: FolderOpen, href: "#projects" },
-  { id: "writing",    label: "Writing",  icon: PenTool,    href: "#technical-writing" },
+  { id: "writing",    label: "Writing",  icon: PenTool,    href: "#writing" },
+
   { id: "contact",    label: "Contact",  icon: Mail,       href: "#contact" },
 ];
 

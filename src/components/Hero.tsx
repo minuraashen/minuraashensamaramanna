@@ -294,27 +294,8 @@ const Hero = () => {
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Floating stat chips */}
-                <motion.div
-                  className="absolute -bottom-3 -left-8 glass-card rounded-xl px-4 py-2.5 border border-border/30 shadow-card hidden sm:block"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0  }}
-                  transition={{ delay: 1.2, type: "spring" }}
-                >
-                  <div className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent font-heading">3.93</div>
-                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">CGPA / 4.0</div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute -top-3 -right-8 glass-card rounded-xl px-4 py-2.5 border border-border/30 shadow-card hidden sm:block"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0  }}
-                  transition={{ delay: 1.4, type: "spring" }}
-                >
-                  <div className="text-xl font-bold text-foreground font-heading">#1</div>
-                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">District Rank</div>
-                </motion.div>
               </motion.div>
+
             </TiltFrame>
           </motion.div>
         </motion.div>

@@ -101,6 +101,7 @@ const About = () => {
       company: "WSO2 LLC",
       role: "Software Engineer Intern (Integration AI Team)",
       period: "Nov 2025 - May 2026",
+      logo: true,
       details: [
         {
           title: "Semantic Search Tool for WSO2 Micro Integrator Copilot",
@@ -109,6 +110,18 @@ const About = () => {
         {
           title: "Export Salesforce Leads to Google Sheets Prebuilt Integration",
           desc: "Created a prebuilt integration to automate exporting Salesforce leads to Google Sheets using Ballerina Integrator for business users."
+        }
+      ]
+    },
+    {
+      company: "University of Moratuwa — ENTC Department",
+      role: "Department Representative (Semesters 7 & 8)",
+      period: "Jun 2026 - Present",
+      logo: false,
+      details: [
+        {
+          title: "Student Leadership & Departmental Representation",
+          desc: "Appointed as the official Department Representative for the Electronic and Telecommunication Engineering department for the 7th and 8th semesters. Responsible for liaising between students and academic staff, coordinating departmental activities, and advocating for student welfare and academic interests at the faculty level."
         }
       ]
     }
@@ -376,7 +389,10 @@ const About = () => {
                   {timelineExperience.map((item, index) => (
                     <div key={index} className="relative group">
                       <span className="absolute -left-[39px] sm:-left-[47px] top-1.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300 shadow-sm shadow-primary/20 overflow-hidden">
-                        <img src={wso2Logo} alt="WSO2" className="w-full h-full object-cover block" />
+                        {item.logo
+                          ? <img src={wso2Logo} alt="WSO2" className="w-full h-full object-cover block" />
+                          : <Users className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        }
                       </span>
                       <Card className="glass-card border border-border/30 p-6 rounded-3xl hover:border-primary/25 hover:shadow-3d transition-all duration-400">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
