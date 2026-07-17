@@ -378,25 +378,6 @@
     background: hsl(var(--primary) / 0.25);
     color: hsl(var(--foreground));
   }
-
-  /* ── Mobile Dock: shrink on very small screens (<400px) ── */
-  @media (max-width: 399px) {
-    .dock-pill {
-      gap: 0 !important;
-      padding-left: 0.5rem !important;
-      padding-right: 0.5rem !important;
-    }
-
-    .dock-btn {
-      width: 2.1rem !important;
-      height: 2.1rem !important;
-    }
-
-    .dock-divider {
-      margin-left: 0.15rem !important;
-      margin-right: 0.15rem !important;
-    }
-  }
 }
 
 /* ============================================================
@@ -494,4 +475,29 @@
 @keyframes stack-in {
   0%   { opacity: 0; transform: perspective(1000px) rotateX(25deg) translateY(60px) scale(0.95); }
   100% { opacity: 1; transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1); }
+}
+
+/* ============================================================
+   MOBILE DOCK — must live outside @layer so the media query
+   is not stripped by Tailwind's CSS processing.
+   Targets all phones (below Tailwind sm = 640 px).
+   Tablet / desktop layouts are completely unaffected.
+   ============================================================ */
+@media (max-width: 639px) {
+  .dock-pill {
+    gap: 0 !important;
+    padding-left: 0.4rem !important;
+    padding-right: 0.4rem !important;
+  }
+
+  .dock-btn {
+    width: 2rem !important;
+    height: 2rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .dock-divider {
+    margin-left: 0.1rem !important;
+    margin-right: 0.1rem !important;
+  }
 }
