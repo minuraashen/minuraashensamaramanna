@@ -378,6 +378,25 @@
     background: hsl(var(--primary) / 0.25);
     color: hsl(var(--foreground));
   }
+
+  /* ── Mobile Dock: shrink on very small screens (<400px) ── */
+  @media (max-width: 399px) {
+    .dock-pill {
+      gap: 0 !important;
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+
+    .dock-btn {
+      width: 2.1rem !important;
+      height: 2.1rem !important;
+    }
+
+    .dock-divider {
+      margin-left: 0.15rem !important;
+      margin-right: 0.15rem !important;
+    }
+  }
 }
 
 /* ============================================================

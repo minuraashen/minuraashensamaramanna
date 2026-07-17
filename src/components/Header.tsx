@@ -71,7 +71,7 @@ const Header = () => {
             aria-label="Main navigation"
           >
             {/* Dock pill */}
-            <div className="glass-dock rounded-2xl px-3 py-2.5 flex items-center gap-1 relative">
+            <div className="glass-dock dock-pill rounded-2xl px-3 py-2.5 flex items-center gap-1 relative">
               {/* Subtle inner shine */}
               <div
                 className="absolute inset-x-0 top-0 h-px rounded-full opacity-40"
@@ -111,7 +111,7 @@ const Header = () => {
                       whileTap={{   y: 0,  scale: 0.92 }}
                       transition={{ type: "spring", stiffness: 400, damping: 20 }}
                       className={`
-                        relative w-10 h-10 flex items-center justify-center rounded-xl
+                        dock-btn relative w-10 h-10 flex items-center justify-center rounded-xl
                         transition-colors duration-200
                         ${isActive
                           ? "bg-primary text-primary-foreground shadow-glow"
@@ -141,7 +141,7 @@ const Header = () => {
               })}
 
               {/* Divider */}
-              <div className="w-px h-6 bg-border/60 mx-1" />
+              <div className="dock-divider w-px h-6 bg-border/60 mx-1" />
 
               {/* Theme Toggle in dock */}
               <div className="flex items-center">

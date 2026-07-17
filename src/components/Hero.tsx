@@ -257,7 +257,7 @@ const Hero = () => {
           {/* ── Profile Picture Column ── */}
           <motion.div
             style={{ y: imageY }}
-            className="flex justify-center order-1 lg:order-2"
+            className="flex justify-center order-1 lg:order-2 pt-8 sm:pt-0"
           >
             <TiltFrame>
               <motion.div
