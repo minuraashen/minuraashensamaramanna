@@ -176,7 +176,7 @@ const Hero = () => {
               variants={itemVariants}
               className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed text-center lg:text-left"
             >
-              B.Sc.(Hons) Electronic and Telecommunication Engineering — University of Moratuwa
+              B.Sc.(Hons) Electronic and Telecommunication Engineering <br /> University of Moratuwa
             </motion.p>
 
             {/* Areas of Interest card */}

@@ -162,7 +162,7 @@ const About = () => {
     <section id="about" className="py-24 px-4 md:px-6 lg:px-8 relative overflow-hidden bg-background">
 
       {/* Subtle background blobs (reduced) */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 blob-3 opacity-30 pointer-events-none -z-0" aria-hidden />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 blob blob-3 opacity-30 pointer-events-none -z-0" aria-hidden />
 
       <div className="container mx-auto max-w-7xl relative z-10">
 
