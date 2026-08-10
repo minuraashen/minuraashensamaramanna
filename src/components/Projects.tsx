@@ -13,13 +13,14 @@ import {
 } from "@/components/ui/carousel";
 
 // Import generated placeholder images
-import wso2SemanticImg from "@/assets/wso2_semantic_search.png";
-import salesforceImg from "@/assets/salesforce_integration.png";
-import fitnessImg from "@/assets/finessproject.png";
-import fullstackImg from "@/assets/fullstackproject.png";
-import fiveBandImg from "@/assets/fivebandeq.png";
-import mlRepoImg from "@/assets/mechinelearning.png";
-import amrImg from "@/assets/amr.jpg";
+import wso2SemanticImg   from "@/assets/wso2_semantic_search.png";
+import salesforceImg     from "@/assets/salesforce_integration.png";
+import fitnessImg        from "@/assets/finessproject.png";
+import fullstackImg      from "@/assets/fullstackproject.png";
+import fiveBandImg       from "@/assets/fivebandeq.png";
+import mlRepoImg         from "@/assets/mechinelearning.png";
+import amrImg            from "@/assets/amr.jpg";
+import kaprukagentImg    from "@/assets/kaprukaagent.png";
 
 const Projects = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -70,6 +71,21 @@ const Projects = () => {
     },
     {
       id: 3,
+      icon: <Brain className="h-6 w-6" />,
+      title: "Kapruka AI Shopping Assistant",
+      description: "AI-powered conversational shopping assistant for Kapruka, Sri Lanka's largest e-commerce platform, using Kapruka's public MCP. Lets users discover products, find gifts, check delivery, and complete a full guest checkout — all through natural chat in English or Sinhala, powered by an LLM function-calling loop over Kapruka's MCP tools.",
+      technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Kapruka MCP", "OpenRouter", "Groq"],
+      myRole: "Designed and built the entire system end-to-end from the LLM function-calling loop and MCP tool integration to the bilingual chat UI and guest checkout flow. Architected the agent pipeline, selected and integrated OpenRouter/Groq as the LLM backend, and deployed the production app on Hugging Face Spaces.",
+      status: "Completed",
+      gradient: "from-violet-500 to-purple-600",
+      githubUrl: "https://github.com/minuraashen/Kapruka-Agent",
+      detailsUrl: "https://minuraashen-kapruka-agent.hf.space/",
+      tags: ["ai-ml", "software"],
+      image: kaprukagentImg,
+      featured: false
+    },
+    {
+      id: 4,
       icon: <Image className="h-6 w-6" />,
       title: "Full-Stack E-Commerce Application",
       description: "A responsive commerce platform using MongoDB, Express.js, React, and Node.js. Incorporates Chakra UI blocks, JWT auth flows, and checkout endpoints.",
@@ -83,7 +99,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 4,
+      id: 5,
       icon: <Brain className="h-6 w-6" />,
       title: "Supervised Machine Learning Repository",
       description: "A comprehensive foundation repository compiling ML pipelines, exploratory data analysis templates, and model validation code.",
@@ -97,7 +113,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 5,
+      id: 6,
       icon: <Volume2 className="h-6 w-6" />,
       title: "Five-Band Audio Equalizer",
       description: "A complete hardware implementation of an analog five-band audio equalizer. Designed active filters, simulated band responses, and troubleshot circuit gains.",
@@ -112,7 +128,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 6,
+      id: 7,
       icon: <Navigation className="h-6 w-6" />,
       title: "Autonomous Mobile Robot (AMR)",
       description: "A modular navigation robot implementing LiDAR slam obstacles detection, closed-loop telemetry, and dynamic motor controls.",
@@ -126,7 +142,7 @@ const Projects = () => {
       featured: false
     },
     {
-      id: 7,
+      id: 8,
       icon: <Mic className="h-6 w-6" />,
       title: "Microphone Preamp with Class AB Amplifier",
       description: "High-fidelity, low-noise audio amplifier featuring thermal compensation circuits and optimized biasing for clear sound delivery.",
@@ -139,7 +155,7 @@ const Projects = () => {
     }
   ];
 
-  const filteredProjects = projects; 
+  const filteredProjects = projects;
 
   const toggleExpand = (id: number, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -148,19 +164,19 @@ const Projects = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Completed":
-        return "text-emerald-400 bg-emerald-500/10 border-emerald-500/25";
-      case "Ongoing":
-        return "text-amber-400 bg-amber-500/10 border-amber-500/25";
-      case "Intern Project":
-        return "text-blue-400 bg-blue-500/10 border-blue-500/25";
-      default:
-        return "text-muted-foreground bg-muted border-border";
+      case "Completed":    return "text-emerald-400 bg-emerald-500/10 border-emerald-500/25";
+      case "Ongoing":      return "text-amber-400 bg-amber-500/10 border-amber-500/25";
+      case "Intern Project": return "text-blue-400 bg-blue-500/10 border-blue-500/25";
+      default:             return "text-muted-foreground bg-muted border-border";
     }
   };
 
   return (
     <section id="projects" className="py-20 px-4 md:px-6 lg:px-8 bg-muted/20 relative overflow-hidden">
+
+      {/* Blob bg accent */}
+      <div className="absolute bottom-0 left-0 w-96 h-96 blob blob-1 opacity-15 pointer-events-none" aria-hidden />
+
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-12">
           <motion.div
@@ -169,8 +185,11 @@ const Projects = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <p className="text-xs uppercase tracking-widest text-primary font-mono-terminal mb-3">
+              What I've built
+            </p>
             <h2 className="text-4xl lg:text-5xl font-heading font-semibold mb-4 text-foreground">
-              Featured <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
+              Featured <span className="shimmer-text">Projects</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               A showcase of engineering work spanning AI/ML applications, low-code systems, and analog circuitry.
@@ -178,15 +197,10 @@ const Projects = () => {
           </motion.div>
         </div>
 
-        {/* Filters removed: showing all projects in the carousel */}
-
-        {/* Dynamic Horizontal Scrollable Carousel */}
+        {/* Horizontal Scrollable Carousel */}
         <div className="relative px-6 sm:px-12 max-w-6xl mx-auto">
           <Carousel
-            opts={{
-              align: "start",
-              loop: false,
-            }}
+            opts={{ align: "start", loop: false }}
             className="w-full"
           >
             <CarouselContent className="-ml-6 items-stretch">
@@ -198,13 +212,13 @@ const Projects = () => {
                     className="pl-6 basis-full md:basis-1/2 lg:basis-1/3 flex"
                   >
                     <Card className="glass-card border border-border/30 hover:border-primary/25 hover:shadow-glow transition-all duration-500 group flex flex-col justify-between overflow-hidden rounded-3xl relative w-full h-full">
-                      
-                      {/* Card Cover Header (Image or Gradient Placeholder) */}
+
+                      {/* Card Cover Header */}
                       <div className="relative h-44 w-full overflow-hidden bg-muted/20 flex-shrink-0">
                         {project.image ? (
-                          <img 
-                            src={project.image} 
-                            alt={project.title} 
+                          <img
+                            src={project.image}
+                            alt={project.title}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         ) : (
@@ -221,13 +235,16 @@ const Projects = () => {
                           </div>
                         )}
                         <div className="absolute top-3 right-3">
-                          <Badge variant="outline" className={`rounded-full px-2.5 py-0.5 text-[10px] bg-black/40 backdrop-blur-md border-none ${getStatusColor(project.status)}`}>
+                          <Badge
+                            variant="outline"
+                            className={`rounded-full px-2.5 py-0.5 text-[10px] bg-black/40 backdrop-blur-md border-none ${getStatusColor(project.status)}`}
+                          >
                             {project.status}
                           </Badge>
                         </div>
                       </div>
 
-                      {/* Card Middle Info */}
+                      {/* Card Body */}
                       <div className="p-5 flex-grow flex flex-col justify-between">
                         <div className="space-y-4">
                           <CardTitle className="text-base sm:text-lg font-heading leading-tight group-hover:text-primary transition-colors font-semibold">
@@ -238,13 +255,13 @@ const Projects = () => {
                             {project.description}
                           </p>
 
-                          {/* Inline Collapsible Contribution Details */}
+                          {/* Collapsible My Role */}
                           <div className="border-t border-border/20 pt-3">
                             <button
                               onClick={(e) => toggleExpand(project.id, e)}
                               className="flex items-center gap-1.5 text-[10px] font-semibold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider"
                             >
-                              <span>My Contribution & Role</span>
+                              <span>My Contribution &amp; Role</span>
                               {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                             </button>
 
@@ -253,7 +270,7 @@ const Projects = () => {
                                 <motion.div
                                   initial={{ height: 0, opacity: 0 }}
                                   animate={{ height: "auto", opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }}
+                                  exit={{    height: 0,    opacity: 0 }}
                                   transition={{ duration: 0.25 }}
                                   className="overflow-hidden"
                                 >
@@ -266,12 +283,16 @@ const Projects = () => {
                           </div>
                         </div>
 
-                        {/* Tech tags placed dynamically at bottom of info */}
+                        {/* Tech tags */}
                         <div className="space-y-1.5 pt-3 mt-auto">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">Technologies</span>
                           <div className="flex flex-wrap gap-1">
                             {project.technologies.map((tech) => (
-                              <Badge key={tech} variant="outline" className="bg-muted text-foreground border-border/50 rounded-full px-2 py-0.5 text-[10px]">
+                              <Badge
+                                key={tech}
+                                variant="outline"
+                                className="bg-muted text-foreground border-border/50 rounded-full px-2 py-0.5 text-[10px]"
+                              >
                                 {tech}
                               </Badge>
                             ))}
@@ -311,15 +332,15 @@ const Projects = () => {
                           )}
                         </div>
                       </div>
-
                     </Card>
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
+
             {/* Arrow controllers */}
             <CarouselPrevious className="-left-4 sm:-left-12 bg-background/80 backdrop-blur-sm border border-border hover:bg-primary hover:text-primary-foreground transition-all duration-300" />
-            <CarouselNext className="-right-4 sm:-right-12 bg-background/80 backdrop-blur-sm border border-border hover:bg-primary hover:text-primary-foreground transition-all duration-300" />
+            <CarouselNext    className="-right-4 sm:-right-12 bg-background/80 backdrop-blur-sm border border-border hover:bg-primary hover:text-primary-foreground transition-all duration-300" />
           </Carousel>
         </div>
       </div>

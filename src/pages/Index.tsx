@@ -14,7 +14,7 @@ const Index = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 120 };
+  const springConfig = { damping: 30, stiffness: 100 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
@@ -25,27 +25,28 @@ const Index = () => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
-
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY]);
 
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden selection:bg-primary/20">
-      {/* Scroll Progress Bar */}
+    <div className="relative min-h-screen bg-background overflow-x-hidden selection:bg-primary/20">
+
+      {/* ── Scroll Progress Bar ── */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-accent to-secondary origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-primary origin-left z-[60]"
         style={{ scaleX: scrollYProgress }}
       />
 
-      {/* Ambient Mouse Spotlight */}
+      {/* ── Ambient Mouse Spotlight (desktop only) ── */}
       <motion.div
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden md:block"
         style={{
-          background: useMotionTemplate`radial-gradient(650px circle at ${smoothX}px ${smoothY}px, hsl(var(--primary) / 0.06), transparent 80%)`
+          background: useMotionTemplate`radial-gradient(700px circle at ${smoothX}px ${smoothY}px, hsl(var(--primary) / 0.05), transparent 80%)`
         }}
       />
 
+      {/* ── Sections ── */}
       <Header />
       <Hero />
       <About />
