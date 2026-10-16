@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePicture from "@/assets/profile-picture.jpg";
+import profilePicture from "@/assets/profile-picture.png";
 import {
   motion,
   useReducedMotion,
