@@ -6,7 +6,7 @@ import semanticBlog1Img from "@/assets/semanticblog1.png";
 import semanticBlog2Img from "@/assets/semanticblog2.png";
 import vscodeBlogImg from "@/assets/vscodeblog.png";
 import vlmBlogImg from "@/assets/vlmblog.png";
-import mentalModelImg from "@/assets/mentalmodel.svg";
+import mentalModelImg from "@/assets/mentalmodel.png";
 import {
   Carousel,
   CarouselContent,
